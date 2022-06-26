@@ -10,7 +10,7 @@ const Header = ({ darkMode, setDarkMode }: headerProps) => {
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     theme === "true" && setDarkMode(true);
-  }, []);
+  }, [setDarkMode]);
 
   const loginHandler = () => {
     Navigate("/login");
@@ -28,7 +28,7 @@ const Header = ({ darkMode, setDarkMode }: headerProps) => {
       <Link to={"/homepage"} className="text-3xl cursor-pointer">
         Crypto-Videos
       </Link>
-      <Link to={"/explore"} className="text-xl cursor-pointer ml-4">
+      <Link to={"/explore"} className="text-xl cursor-pointer ml-8">
         Explore
       </Link>
       <div
