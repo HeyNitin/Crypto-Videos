@@ -4,6 +4,7 @@ import App from "App";
 import "index.css";
 import reportWebVitals from "reportWebVitals";
 import { makeServer } from "server";
+import { BrowserRouter } from "react-router-dom";
 
 // Call make Server
 makeServer();
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
