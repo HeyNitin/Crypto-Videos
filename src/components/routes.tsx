@@ -12,18 +12,20 @@ import { Error } from "pages/error";
 
 const Routes = (): JSX.Element => {
   return (
-    <R>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/homepage" element={<Homepage />} />
-      <Route path="/explore" element={<Explore />} />
-      <Route path="/playlist" element={<Playlist />} />
-      <Route path="/watch-later" element={<WatchLater />} />
-      <Route path="/liked-videos" element={<LikedVideos />} />
-      <Route path="/history" element={<History />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/sign-up" element={<Signup />} />
-      <Route path="*" element={<Error />} />
-    </R>
+    <div className="min-h-screen mt-20 dark:bg-slate-600 dark:text-white">
+      <R>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/watch-later" element={<WatchLater />} />
+        <Route path="/liked-videos" element={<LikedVideos />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<Signup />} />
+        <Route path="*" element={<Error />} />
+      </R>
+    </div>
   );
 };
 

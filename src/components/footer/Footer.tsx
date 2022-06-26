@@ -7,7 +7,7 @@ import {
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="flex space-x-6 justify-center bg-slate-200 p-4 items-baseline">
+    <footer className="flex space-x-6 shadow-3xl z-3 justify-center bg-white p-6 items-baseline dark:bg-slate-700">
       <a
         href="https://github.com/HeyNitin/Crypto-Videos"
         target="_blank"
@@ -15,7 +15,7 @@ const Footer = (): JSX.Element => {
       >
         <FontAwesomeIcon
           icon={faGithub}
-          className="text-4xl hover:text-slate-600"
+          className="text-4xl dark:text-white dark:hover:text-slate-400 hover:text-slate-400"
         />
       </a>
       <a
@@ -25,7 +25,7 @@ const Footer = (): JSX.Element => {
       >
         <FontAwesomeIcon
           icon={faTwitter}
-          className="text-4xl hover:text-blue-400"
+          className="text-4xl dark:text-white dark:hover:text-blue-400 hover:text-blue-400"
         />
       </a>
       <a
@@ -35,7 +35,7 @@ const Footer = (): JSX.Element => {
       >
         <FontAwesomeIcon
           icon={faLinkedin}
-          className="text-4xl hover:text-blue-600"
+          className="text-4xl dark:text-white dark:hover:text-blue-600 hover:text-blue-600"
         />
       </a>
     </footer>
