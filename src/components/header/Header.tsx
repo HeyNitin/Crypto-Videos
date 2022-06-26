@@ -33,7 +33,7 @@ const Header = ({ darkMode, setDarkMode }: headerProps) => {
       </Link>
       <div
         onClick={() => themeHandler()}
-        className="text-2xl ml-auto cursor-pointer"
+        className="text-2xl ml-auto cursor-pointer text-gray-400 hover:text-slate-700 dark:text-slate-300 dark:hover:text-white"
       >
         <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
       </div>
