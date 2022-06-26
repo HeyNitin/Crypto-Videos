@@ -8,7 +8,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-slate-200 flex p-4 items-baseline">
+    <nav className="bg-slate-200 flex p-4 items-baseline sticky">
       <Link to={"/homepage"} className="text-3xl cursor-pointer">
         Crypto-Videos
       </Link>
