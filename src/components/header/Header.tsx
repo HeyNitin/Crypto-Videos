@@ -1,10 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import { headerProps } from "./header.type";
+import { headerTypes } from "./header.type";
 import { useEffect } from "react";
 
-const Header = ({ darkMode, setDarkMode }: headerProps) => {
+const Header = ({ darkMode, setDarkMode }: headerTypes) => {
   const Navigate = useNavigate();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Header = ({ darkMode, setDarkMode }: headerProps) => {
       </div>
       <button
         onClick={() => loginHandler()}
-        className="h-12 text-xl p-4 ml-8 border-2 dark:border-white border-black drop-shadow-2xl flex items-center rounded-md"
+        className="h-10 text-xl p-4 ml-8 border-2 dark:border-white border-black drop-shadow-2xl flex items-center rounded-md"
       >
         Login
       </button>

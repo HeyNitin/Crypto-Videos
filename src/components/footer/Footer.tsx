@@ -7,7 +7,7 @@ import {
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="flex space-x-6 shadow-footer z-3 justify-center bg-white p-6 items-baseline dark:bg-slate-700">
+    <footer className="flex space-x-6 shadow-footer justify-center bg-white p-6 items-baseline dark:bg-slate-700">
       <a
         href="https://github.com/HeyNitin/Crypto-Videos"
         target="_blank"
