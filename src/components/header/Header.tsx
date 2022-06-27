@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import { headerTypes } from "./header.type";
+import { headerTypes } from "components/header/headerTypes.type";
 import { useEffect } from "react";
 
 const Header = ({ darkMode, setDarkMode }: headerTypes) => {

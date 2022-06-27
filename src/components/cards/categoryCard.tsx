@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { categoryCardTypes } from "components/cards/categoryCard.type"
+import { categoryCardTypes } from "components/cards/categoryCardTypes.type"
 
 const CategoryCard = ({ id, img, title }: categoryCardTypes): JSX.Element => {
   const Navigate = useNavigate()

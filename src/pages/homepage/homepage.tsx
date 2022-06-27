@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CategoryCard } from "components/cards/categoryCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { categoryTypes } from "pages/homepage/category.type";
+import { categoryTypes } from "pages/homepage/categoryTypes.type";
 import { useToast } from "components/toast";
 
 
