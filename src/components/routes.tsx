@@ -12,7 +12,7 @@ import { Error } from "pages/error";
 
 const Routes = (): JSX.Element => {
   return (
-    <div className="min-h-screen mt-20 dark:bg-slate-600 dark:text-white">
+    <div className=" mt-20 dark:bg-slate-600 dark:text-white">
       <R>
         <Route path="/" element={<Homepage />} />
         <Route path="/homepage" element={<Homepage />} />
