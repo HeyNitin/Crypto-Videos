@@ -5,8 +5,15 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      gridTemplateColumns: {
+        categories: "repeat(auto-fit,minmax(18rem,1fr))",
+      },
+      spacing: {
+        banner: "32rem",
+      },
       boxShadow: {
-        "3xl": "0px 0px 8px 0px rgba(0, 0, 0, 0.3)",
+        footer: "0px 0px 8px 0px rgba(0, 0, 0, 0.3)",
+        card: "0px 4px 4px 0px rgba(0, 0, 0, 0.3)",
       },
     },
     plugins: [],

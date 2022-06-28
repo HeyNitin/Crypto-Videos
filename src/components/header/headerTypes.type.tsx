@@ -1,4 +1,4 @@
-export type headerProps = {
+export type headerTypes = {
   darkMode: Boolean;
   setDarkMode: Function;
 };

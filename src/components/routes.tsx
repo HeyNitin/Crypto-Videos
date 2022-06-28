@@ -1,6 +1,6 @@
 import { Routes as R, Route } from "react-router-dom";
 
-import { Homepage } from "pages/homepage";
+import { Homepage } from "pages/homepage/homepage";
 import { Explore } from "pages/explore";
 import { Playlist } from "pages/playlist";
 import { WatchLater } from "pages/watchLater";
@@ -12,7 +12,7 @@ import { Error } from "pages/error";
 
 const Routes = (): JSX.Element => {
   return (
-    <div className="min-h-screen mt-20 dark:bg-slate-600 dark:text-white">
+    <div className=" mt-20 pb-16 dark:bg-slate-600 dark:text-white">
       <R>
         <Route path="/" element={<Homepage />} />
         <Route path="/homepage" element={<Homepage />} />

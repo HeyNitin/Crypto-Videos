@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+  border-bottom: 1px solid black;
+}
+
+.dark .active {
+  border-bottom: 1px solid white;
+}
+
+
+.Toastify__toast-container--top-right {
+  top: 6rem;
+  right: 1rem;
+}
+
+.dark .Toastify__toast-theme--light {
+  background-color: black;
+  color: white;
+}
