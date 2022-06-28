@@ -1,8 +1,9 @@
 import { useDocumentTitle } from "hooks/useDocumentTitle";
+import { Sidebar } from "components/sidebar";
 
 const Playlist = (): JSX.Element => {
   useDocumentTitle("Playlist");
-  return <div>This is Playlist page</div>;
+  return <div>    <Sidebar /></div>;
 };
 
 export { Playlist };
