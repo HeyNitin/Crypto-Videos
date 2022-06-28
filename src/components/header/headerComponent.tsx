@@ -26,7 +26,7 @@ const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 				showToast("error", "Something went wrong while trying to load videos");
 			}
 		})();
-	}, [dispatch, showToast]);
+	}, [dispatch]);
 
 	const loginHandler = () => {
 		Navigate("/login");
@@ -50,6 +50,7 @@ const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 				Crypto-Videos
 			</NavLink>
 			<NavLink
+				onClick={() => dispatch({ type: "All" })}
 				to={"/explore"}
 				className="hidden lg:block text-xl cursor-pointer ml-8"
 			>
