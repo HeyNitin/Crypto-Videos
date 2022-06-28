@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.active {
+@import "material-icons/iconfont/outlined.css";
+
+.active,
+.chips {
   border-bottom: 1px solid black;
 }
 
-.dark .active {
+.dark .active,
+.dark .chips {
   border-bottom: 1px solid white;
 }
 

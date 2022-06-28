@@ -12,7 +12,7 @@ const Navbar = ({ isNavbarActive }: navbarTypes): JSX.Element => {
 
     return (<>{
         isNavbarActive && (
-            <nav className="sidebar navbar z-20 dark:text-white bg-white dark:bg-slate-600 shadow-footer fixed min-h-screen w-60 py-8 px-4 flex flex-col space-y-4 lg:hidden transition-all ease-in duration-300">
+            <nav className="sidebar navbar z-20 dark:text-white bg-white dark:bg-slate-700 shadow-footer fixed min-h-screen w-60 py-8 px-4 flex flex-col space-y-4 lg:hidden transition-all ease-in duration-300">
                 <NavLink to={'/login'}><div className={"hover:bg-slate-200 dark:hover:bg-slate-500 py-2 p-1 rounded-md flex flex-row items-center gap-4"}>
                     <FontAwesomeIcon icon={faUser} />
                     Login</div></NavLink>

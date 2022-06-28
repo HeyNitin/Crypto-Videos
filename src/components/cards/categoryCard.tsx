@@ -5,7 +5,7 @@ const CategoryCard = ({ id, img, title }: categoryCardTypes): JSX.Element => {
   const Navigate = useNavigate()
   return (
     <div key={id} onClick={() => Navigate('/explore')} className="shadow-card cursor-pointer w-72 h-40 grid">
-      <img className="rounded-md col-start-1 col-end-2 row-start-1 row-end-3"
+      <img className="col-start-1 col-end-2 row-start-1 row-end-3"
         src={img}
         alt="thumbnail"
       ></img>
