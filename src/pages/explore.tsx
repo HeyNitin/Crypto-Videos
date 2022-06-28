@@ -11,7 +11,7 @@ const Explore = (): JSX.Element => {
 		<div>
 			<Sidebar />
 			<div className="lg:ml-60 p-4 dark:bg-slate-600">
-				<div className="flex flex-row gap-4 chips p-2 w-screen">
+				<div className="flex flex-row gap-4 chips p-2">
 					<div
 						onClick={() => dispatch({ type: "All" })}
 						className={`rounded-xl cursor-pointer p-1 hover:bg-slate-200 dark:hover:bg-slate-500 px-3 ${

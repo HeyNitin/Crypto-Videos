@@ -20,8 +20,10 @@ const VideoCard = ({ value }: { value: video }): JSX.Element => {
 				<div className="truncate p-2">
 					<p className="truncate text-sm font-semibold">{title}</p>
 					<p className="text-xs">{creator}</p>
-					<div className="text-xs flex items-center gap-2">
-						<span className="material-icons-outlined text-sm">visibility</span>
+					<div className="text-xs flex items-center gap-1">
+						<span className="material-icons-outlined text-sm pt-0.5">
+							visibility
+						</span>
 						<p>{views} views</p>
 					</div>
 				</div>
@@ -30,8 +32,10 @@ const VideoCard = ({ value }: { value: video }): JSX.Element => {
 						icon={faEllipsisVertical}
 						className={"w-4 ml-auto pt-4 pr-2"}
 					/>
-					<div className="flex flex-row items-center gap-2 p-2 text-xs mt-1">
-						<span className="material-icons-outlined text-sm">timer</span>
+					<div className="flex flex-row items-center  p-2 text-xs mt-1.5">
+						<span className="material-icons-outlined text-sm pt-0.5">
+							timer
+						</span>
 						<p>{videoLength}</p>
 					</div>
 				</div>
