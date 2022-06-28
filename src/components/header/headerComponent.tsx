@@ -40,7 +40,7 @@ const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 	};
 
 	return (
-		<header className="bg-white drop-shadow-md dark:bg-slate-700 dark:text-white h-24 flex p-4 items-baseline fixed min-w-full top-0 z-30">
+		<header className="bg-white drop-shadow-md dark:bg-slate-700 dark:text-white h-20 flex p-4 items-baseline fixed min-w-full top-0 z-30">
 			<FontAwesomeIcon
 				onClick={() => setIsNavbarActive((prev: boolean) => !prev)}
 				className="lg:hidden pr-4 text-2xl cursor-pointer"
