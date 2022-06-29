@@ -1,0 +1,3 @@
+const useInitializeData = () => {};
+
+export { useInitializeData };

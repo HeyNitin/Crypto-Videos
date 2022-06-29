@@ -6,7 +6,7 @@ import {
 	useState,
 } from "react";
 
-const AuthContext = createContext<{
+const authContext = createContext<{
 	token: string;
 	setToken: Function;
 }>({ token: "", setToken: () => {} });
@@ -21,12 +21,12 @@ const AuthProvider = ({ children }: { children: ReactNode }): JSX.Element => {
 	}, []);
 
 	return (
-		<AuthContext.Provider value={{ token, setToken }}>
+		<authContext.Provider value={{ token, setToken }}>
 			{children}
-		</AuthContext.Provider>
+		</authContext.Provider>
 	);
 };
 
-const useAuth = () => useContext(AuthContext);
+const useAuth = () => useContext(authContext);
 
 export { AuthProvider, useAuth };

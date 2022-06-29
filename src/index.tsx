@@ -6,6 +6,7 @@ import reportWebVitals from "reportWebVitals";
 import { makeServer } from "server";
 import { BrowserRouter } from "react-router-dom";
 import { VideoProvider } from "contexts/videoContext/videoContext";
+import { AuthProvider } from "contexts/authContext/authContext";
 
 // Call make Server
 makeServer();
@@ -16,9 +17,11 @@ const root = ReactDOM.createRoot(
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<VideoProvider>
-				<App />
-			</VideoProvider>
+			<AuthProvider>
+				<VideoProvider>
+					<App />
+				</VideoProvider>
+			</AuthProvider>
 		</BrowserRouter>
 	</React.StrictMode>
 );
