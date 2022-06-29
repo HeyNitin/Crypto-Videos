@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { video } from "contexts/videoContext/videoContext.type";
+import { useNavigate } from "react-router-dom";
 
 const VideoCard = ({ value }: { value: video }): JSX.Element => {
 	const { img, creatorProfile, creator, title, views, videoLength } = value;
+	const Navigate = useNavigate();
 	return (
 		<div className="shadow-card m-4 cursor-pointer w-72 grid dark:bg-white">
 			<img
@@ -29,6 +31,7 @@ const VideoCard = ({ value }: { value: video }): JSX.Element => {
 				</div>
 				<div className="flex flex-col justify-end">
 					<FontAwesomeIcon
+						onClick={() => Navigate("/login")}
 						icon={faEllipsisVertical}
 						className={"w-4 ml-auto pt-4 pr-2"}
 					/>
