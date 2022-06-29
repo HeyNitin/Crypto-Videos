@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 export const videos = [
 	{
 		_id: uuid(),
-		img: "https://i.postimg.cc/zBB7Pp3X/thumbnail-01.jpg",
+		img: "https://i.postimg.cc/2j79H27n/thumbnail-01.jpg",
 		title:
 			"What is Bitcoin & Cryptocurrency? How to earn and invest? Easy explanation by Him eesh Madaan",
 		description:
@@ -147,7 +147,7 @@ export const videos = [
 	},
 	{
 		_id: uuid(),
-		img: "https://i.postimg.cc/131wHf7J/thumbnail-02.jpg",
+		img: "https://i.postimg.cc/m2NwZD5M/thumbnail-02.jpg",
 		title: "Is Web3 all Hype? Top 10 Web 3.0 Questions & Answers",
 		description:
 			"A complete introduction into the wild world of Web3 - the decentralized web. Is Web 3.0 the future or is it all hype?",
@@ -216,7 +216,7 @@ export const videos = [
 	},
 	{
 		_id: uuid(),
-		img: "https://i.postimg.cc/NFv0Rrpc/thumbnail-03.jpg",
+		img: "https://i.postimg.cc/W1Km4kT9/thumbnail-03.jpg",
 		title:
 			"NFTs explained in 10 minutes | Non Fungible Tokens | Ankur Warikoo Hindi",
 		description:
