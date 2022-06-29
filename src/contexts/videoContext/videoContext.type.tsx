@@ -24,7 +24,6 @@ export type state = {
 	Blockchain: boolean;
 	NFTs: boolean;
 	videos: video[];
-	filteredVideos: video[];
 };
 
 export type action =
