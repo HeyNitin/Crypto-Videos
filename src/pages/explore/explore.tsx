@@ -1,5 +1,5 @@
 import { useDocumentTitle } from "hooks/useDocumentTitle";
-import { Sidebar } from "components/sidebar";
+import { Sidebar } from "components/sidebar/sidebar";
 import { VideoCard } from "components/cards/videoCard";
 import { useVideo } from "contexts/videoContext/videoContext";
 

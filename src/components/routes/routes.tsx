@@ -1,14 +1,14 @@
 import { Routes as R, Route } from "react-router-dom";
 
 import { Homepage } from "pages/homepage/homepage";
-import { Explore } from "pages/explore";
-import { Playlist } from "pages/playlists";
-import { WatchLater } from "pages/watchLater";
-import { LikedVideos } from "pages/likedVideos";
-import { History } from "pages/history";
-import { Login } from "pages/login";
-import { Signup } from "pages/signup";
-import { Error } from "pages/error";
+import { Explore } from "pages/explore/explore";
+import { Playlist } from "pages/playlists/playlists";
+import { WatchLater } from "pages/watchLater/watchLater";
+import { LikedVideos } from "pages/likedVideos/likedVideos";
+import { History } from "pages/history/history";
+import { Login } from "pages/login/login";
+import { Signup } from "pages/signup/signup";
+import { Error } from "pages/error/error";
 
 const Routes = (): JSX.Element => {
 	return (

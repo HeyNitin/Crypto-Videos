@@ -5,7 +5,7 @@ import { headerTypes } from "components/header/headerTypes.type";
 import { useEffect } from "react";
 import { useVideo } from "contexts/videoContext/videoContext";
 import axios from "axios";
-import { showToast } from "components/toast";
+import { showToast } from "components/toast/toast";
 
 const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 	const Navigate = useNavigate();
