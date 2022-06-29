@@ -27,7 +27,7 @@ const Homepage = (): JSX.Element => {
 	}, [setCategories, showToast]);
 
 	return (
-		<div>
+		<div className="min-h-[calc(100vh-5rem)] flex flex-col">
 			<div className="grid">
 				<img
 					className="w-screen h-100 lg:h-banner col-start-1 row-start-1 col-end-2 row-end-3"
@@ -56,7 +56,9 @@ const Homepage = (): JSX.Element => {
 					))}
 				</div>
 			</div>
-			<Footer />
+			<div className="mt-auto">
+				<Footer />
+			</div>
 		</div>
 	);
 };

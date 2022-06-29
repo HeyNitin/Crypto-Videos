@@ -1,5 +1,5 @@
 export type headerTypes = {
-  darkMode: Boolean;
-  setDarkMode: Function;
-  setIsNavbarActive: Function
+	darkMode: Boolean;
+	setDarkMode: Function;
+	setIsNavbarActive: Function;
 };
