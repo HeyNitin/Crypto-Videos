@@ -14,7 +14,7 @@ const initialValue: state = {
 
 const videoContext = createContext<{
 	state: state;
-	dispatch: any;
+	dispatch: Function;
 }>({ state: initialValue, dispatch: () => {} });
 
 const VideoProvider = ({ children }: childTypes): JSX.Element => {

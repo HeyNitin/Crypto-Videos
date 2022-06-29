@@ -4,13 +4,12 @@ import { CategoryCard } from "components/cards/categoryCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { categoryTypes } from "pages/homepage/categoryTypes.type";
-import { useToast } from "components/toast";
+import { showToast } from "components/toast";
 import { Footer } from "components/footer/footerComponent";
 import { useVideo } from "contexts/videoContext/videoContext";
 
 const Homepage = (): JSX.Element => {
 	const [categories, setCategories] = useState([]);
-	const { showToast } = useToast();
 	const { dispatch } = useVideo();
 
 	useDocumentTitle("Homepage");
@@ -24,7 +23,7 @@ const Homepage = (): JSX.Element => {
 				showToast("error", "Something went wrong while loading the page");
 			}
 		})();
-	}, [setCategories, showToast]);
+	}, [setCategories]);
 
 	return (
 		<div className="min-h-[calc(100vh-5rem)] flex flex-col">
