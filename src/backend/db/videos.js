@@ -94,7 +94,8 @@ export const videos = [
 		_id: uuid(),
 		img: "https://i.postimg.cc/xdxqyBK4/thumbnail-09.jpg",
 		title: "All about Blockchain | Simply Explained",
-		description: "Not Available",
+		description:
+			"Hey guys, welcome to this new channel - Apna College. Here Shradha Didi and I(your Aman Bhaiya) will help you in finding your right college, career options, soft skills and will also help you learn to code. Chalo Phodte hain!",
 		creator: "Apna College",
 		creatorProfile: "https://i.postimg.cc/Cxn81hkx/creator-image-07.jpg",
 		views: "857k",
@@ -136,7 +137,8 @@ export const videos = [
 		_id: uuid(),
 		img: "https://i.postimg.cc/FFYyBXHm/thumbnail-12.jpg",
 		title: "How I would learn blockchain if I had to start over",
-		description: "Not Available",
+		description:
+			"Learn to build decentralized apps on the Ethereum Blockchain.",
 		creator: "Dapp University",
 		creatorProfile: "https://i.postimg.cc/jdW7ZHvj/creator-image-10.jpg",
 		views: "106k",
@@ -233,7 +235,8 @@ export const videos = [
 		_id: uuid(),
 		img: "https://i.postimg.cc/vZ6Mqz43/thumbnail-17.jpg",
 		title: "What are NFTs? Simply Explained | Non-Fungible Token",
-		description: "Not Available",
+		description:
+			"Hey guys, welcome to this new channel - Apna College. Here Shradha Didi and I(your Aman Bhaiya) will help you in finding your right college, career options, soft skills and will also help you learn to code. Chalo Phodte hain!",
 		creator: "Apna College",
 		creatorProfile: "https://i.postimg.cc/Cxn81hkx/creator-image-07.jpg",
 		views: "460k",

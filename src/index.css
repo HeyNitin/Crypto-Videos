@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "material-icons/iconfont/outlined.css";
+@import "material-symbols";
 
 :root {
 	font-size: 7px;

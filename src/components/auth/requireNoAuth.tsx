@@ -8,7 +8,6 @@ const RequireNoAuth = ({ children }: { children: ReactNode }): JSX.Element => {
 	const location = useLocation();
 
 	const state = location?.state as { from: { pathname: string } };
-
 	return (
 		<>
 			{res || token ? (
