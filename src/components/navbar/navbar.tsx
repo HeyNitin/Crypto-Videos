@@ -9,12 +9,14 @@ import {
 	faThumbsUp,
 	faClockRotateLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "contexts/authContext/authContext";
 
 type navbarTypes = {
 	isNavbarActive: boolean;
 };
 
 const Navbar = ({ isNavbarActive }: navbarTypes): JSX.Element => {
+	const { token } = useAuth();
 	return (
 		<>
 			{isNavbarActive && (

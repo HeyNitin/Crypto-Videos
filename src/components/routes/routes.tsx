@@ -9,6 +9,8 @@ import { History } from "pages/history/history";
 import { Login } from "pages/login/login";
 import { Signup } from "pages/signup/signup";
 import { Error } from "pages/error/error";
+import RequireAuth from "components/auth/requireAuth";
+import RequireNoAuth from "components/auth/requireNoAuth";
 
 const Routes = (): JSX.Element => {
 	return (
@@ -16,12 +18,54 @@ const Routes = (): JSX.Element => {
 			<R>
 				<Route path="/" element={<Homepage />} />
 				<Route path="/explore" element={<Explore />} />
-				<Route path="/playlists" element={<Playlist />} />
-				<Route path="/watch-later" element={<WatchLater />} />
-				<Route path="/liked-videos" element={<LikedVideos />} />
-				<Route path="/history" element={<History />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/sign-up" element={<Signup />} />
+				<Route
+					path="/playlists"
+					element={
+						<RequireAuth>
+							<Playlist />
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path="/watch-later"
+					element={
+						<RequireAuth>
+							<WatchLater />
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path="/liked-videos"
+					element={
+						<RequireAuth>
+							<LikedVideos />
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path="/history"
+					element={
+						<RequireAuth>
+							<History />
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path="/login"
+					element={
+						<RequireNoAuth>
+							<Login />
+						</RequireNoAuth>
+					}
+				/>
+				<Route
+					path="/signup"
+					element={
+						<RequireNoAuth>
+							<Signup />
+						</RequireNoAuth>
+					}
+				/>
 				<Route path="*" element={<Error />} />
 			</R>
 		</div>
