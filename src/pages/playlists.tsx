@@ -1,8 +1,8 @@
 import { useDocumentTitle } from "hooks/useDocumentTitle";
 import { Sidebar } from "components/sidebar";
 
-const WatchLater = (): JSX.Element => {
-	useDocumentTitle("Watch-later");
+const Playlist = (): JSX.Element => {
+	useDocumentTitle("Playlist");
 	return (
 		<div>
 			{" "}
@@ -11,4 +11,4 @@ const WatchLater = (): JSX.Element => {
 	);
 };
 
-export { WatchLater };
+export { Playlist };
