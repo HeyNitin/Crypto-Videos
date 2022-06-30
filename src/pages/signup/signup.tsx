@@ -24,7 +24,7 @@ const initialValue: signupInitialValueTypes = {
 
 const Signup = (): JSX.Element => {
 	const [state, dispatch] = useReducer(signupRedcuer, initialValue);
-	const { setToken } = useAuth();
+	const { setToken, setUser } = useAuth();
 	const Navigate = useNavigate();
 	const location = useLocation();
 
@@ -77,10 +77,10 @@ const Signup = (): JSX.Element => {
 					password: state.password,
 					name: state.name,
 				});
-				console.log(res);
 				switch (res.status) {
 					case 201:
 						setToken(res.data.encodedToken);
+						setUser(res.data.createdUser);
 						showToast("success", "You're successfully Signed Up");
 						break;
 
@@ -171,7 +171,7 @@ const Signup = (): JSX.Element => {
 						<label htmlFor="tnc">I accept all terms & conditions</label>
 					</div>
 					<div>
-						<button className="w-full text-center p-2 mt-8 bg-slate-500 text-white dark:bg-slate-100 dark:text-black">
+						<button className="w-full text-center p-2 mt-8 bg-black hover:bg-slate-600 text-white dark:bg-slate-100 dark:text-black">
 							Sign-Up
 						</button>
 						<p

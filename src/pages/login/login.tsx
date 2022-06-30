@@ -19,7 +19,7 @@ const initialValue: loginInitialValueTypes = {
 
 const Login = (): JSX.Element => {
 	const [state, dispatch] = useReducer(loginReducer, initialValue);
-	const { setToken } = useAuth();
+	const { setToken, setUser } = useAuth();
 	const Navigate = useNavigate();
 	const location = useLocation();
 
@@ -33,8 +33,17 @@ const Login = (): JSX.Element => {
 						password: state.password,
 					});
 					setToken(data.encodedToken);
-					state.rememberMe &&
-						localStorage.setItem("token", JSON.stringify(data.encodedToken));
+					setUser(data.foundUser);
+					switch (state.rememberMe) {
+						case true:
+							localStorage.setItem("token", JSON.stringify(data.encodedToken));
+							localStorage.setItem("user", JSON.stringify(data.foundUser));
+							break;
+
+						default:
+							break;
+					}
+
 					showToast("success", "You're successfully logged in");
 				} catch (error) {
 					dispatch({ type: "Error", payload: "Wrong Credentials" });
@@ -122,7 +131,7 @@ const Login = (): JSX.Element => {
 						</label>
 					</div>
 					<div>
-						<button className="w-full text-center p-2 mt-8 bg-slate-500 text-white dark:bg-slate-100 dark:text-black">
+						<button className="w-full text-center p-2 mt-8 bg-black hover:bg-slate-600 text-white dark:bg-slate-100 dark:text-black">
 							Login
 						</button>
 						<p

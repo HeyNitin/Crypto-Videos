@@ -11,6 +11,7 @@ import { Signup } from "pages/signup/signup";
 import { Error } from "pages/error/error";
 import RequireAuth from "components/auth/requireAuth";
 import RequireNoAuth from "components/auth/requireNoAuth";
+import { Profile } from "pages/profile/profile";
 
 const Routes = (): JSX.Element => {
 	return (
@@ -47,6 +48,14 @@ const Routes = (): JSX.Element => {
 					element={
 						<RequireAuth>
 							<History />
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path="/profile"
+					element={
+						<RequireAuth>
+							<Profile />
 						</RequireAuth>
 					}
 				/>
