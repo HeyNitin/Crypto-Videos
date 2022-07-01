@@ -5,7 +5,7 @@ export type childTypes = {
 };
 
 export type video = {
-	_id: number;
+	_id: string;
 	img: string;
 	title: string;
 	description: string;

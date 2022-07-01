@@ -2,16 +2,22 @@ import axios from "axios";
 import { showToast } from "components/toast/toast";
 import { useDocumentTitle } from "hooks/useDocumentTitle";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { video } from "contexts/videoContext/videoContext.type";
 import { getVideoId } from "services/getVideoIdService";
 import { Sidebar } from "components/sidebar/sidebar";
 import { useAuth } from "contexts/authContext/authContext";
+import { useWatchLater } from "contexts/watchLaterContext/watchLaterContext";
+import { removeFromWatchLater } from "services/watchLaterServices/removeFromWatchLater";
 
 const VideoPage = () => {
 	const { videoId } = useParams();
 	const [video, setVideo] = useState<video>();
 	const { token } = useAuth();
+	const { watchLater, setWatchLater } = useWatchLater();
+	const Navigate = useNavigate();
+	const location = useLocation();
+	const [inWatchlist, setInWatchlist] = useState(false);
 
 	useDocumentTitle(video?.title || "Video");
 
@@ -56,6 +62,39 @@ const VideoPage = () => {
 		}
 	}, [video, token, videoId]);
 
+	useEffect(() => {
+		setInWatchlist(false);
+		for (let item of watchLater) {
+			if (item._id === videoId) {
+				setInWatchlist(true);
+				break;
+			}
+		}
+	}, [watchLater, videoId]);
+
+	const addToWatchLater = async () => {
+		if (token) {
+			try {
+				const res = await axios.post(
+					"/api/user/watchlater",
+					{ video },
+					{ headers: { authorization: token } }
+				);
+				setWatchLater(res.data.watchlater);
+				showToast("success", "item has been added to watch later");
+			} catch (error) {
+				showToast(
+					"error",
+					"Something went wrong while trying to add item to watch later"
+				);
+			}
+		} else {
+			Navigate("/login", {
+				state: { from: { pathname: location.pathname } },
+			});
+		}
+	};
+
 	return (
 		<div>
 			<Sidebar />
@@ -95,17 +134,34 @@ const VideoPage = () => {
 								</div>
 							</div>
 						</div>
-						<div className="ml-auto flex gap-1">
+						<div className="ml-auto flex gap-1 cursor-pointer">
 							<span className="material-symbols-outlined">thumb_up</span>
-							<p className="cursor-pointer font-semibold">LIKE</p>
+							<p className="font-semibold">LIKE</p>
 						</div>
-						<div className="flex gap-1">
-							<span className="material-icons-outlined">watch_later</span>
-							<p className="cursor-pointer font-semibold">WATCH LATER</p>
+						<div
+							onClick={() =>
+								inWatchlist
+									? token
+										? removeFromWatchLater({
+												_id: video?._id || "",
+												token,
+												setWatchLater,
+										  })
+										: Navigate("/login", {
+												state: { from: { pathname: location.pathname } },
+										  })
+									: addToWatchLater()
+							}
+							className="flex gap-1 cursor-pointer"
+						>
+							<span className="material-icons-outlined">
+								{inWatchlist ? "task_alt" : "watch_later"}
+							</span>
+							<p className="font-semibold">WATCH LATER</p>
 						</div>
-						<div className="flex gap-1">
+						<div className="flex gap-1 cursor-pointer">
 							<span className="material-icons-outlined">playlist_add</span>
-							<p className="cursor-pointer font-semibold">SAVE TO PLAYLIST</p>
+							<p className="font-semibold">SAVE TO PLAYLIST</p>
 						</div>
 					</div>
 					<div>{video?.description}</div>

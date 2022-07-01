@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { video } from "contexts/videoContext/videoContext.type";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const VideoCard = ({ value }: { value: video }): JSX.Element => {
 	const { _id, img, creatorProfile, creator, title, views, videoLength } =
 		value;
 	const Navigate = useNavigate();
+	const location = useLocation();
+
 	return (
 		<div
 			onClick={() => {
@@ -40,7 +42,7 @@ const VideoCard = ({ value }: { value: video }): JSX.Element => {
 						onClick={(e) => {
 							e.stopPropagation();
 							Navigate("/login", {
-								state: { from: { pathname: "/explore" } },
+								state: { from: { pathname: location.pathname } },
 							});
 						}}
 						icon={faEllipsisVertical}
