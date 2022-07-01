@@ -12,7 +12,6 @@ const VideoPage = () => {
 	const { videoId } = useParams();
 	const [video, setVideo] = useState<video>();
 	const { token } = useAuth();
-	// const [changeHistoryPosition, setChangeHistoryPosition] = useState(false);
 
 	useDocumentTitle(video?.title || "Video");
 
@@ -45,10 +44,11 @@ const VideoPage = () => {
 					);
 				} catch (error) {
 					if (
-						(error as { response: { status: Number } }).response.status === 409
+						!(
+							(error as { response: { status: Number } }).response.status ===
+							409
+						)
 					) {
-						// setChangeHistoryPosition(true);
-					} else {
 						showToast("error", "Something went wrong");
 					}
 				}
