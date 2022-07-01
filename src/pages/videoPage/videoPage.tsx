@@ -56,34 +56,6 @@ const VideoPage = () => {
 		}
 	}, [video, token, videoId]);
 
-	// useEffect(() => {
-	// 	if (changeHistoryPosition && token) {
-	// 		(async () => {
-	// 			try {
-	// 				let response = await axios.get("api/user/history", {
-	// 					headers: { authorization: token },
-	// 				});
-	// 				console.log("history", response);
-	// 				response = await axios.delete(`api/user/history/${videoId}`, {
-	// 					headers: { authorization: token },
-	// 				});
-	// 				console.log("deleted from history", response);
-	// 				response = await axios.post(
-	// 					"/api/user/history",
-	// 					{ video },
-	// 					{
-	// 						headers: { authorization: token },
-	// 					}
-	// 				);
-	// 				console.log("added to history after deletion", response);
-	// 			} catch (error) {
-	// 				console.log(error);
-	// 				showToast("error", "Something went wrong");
-	// 			}
-	// 		})();
-	// 	}
-	// }, [token, video, videoId, changeHistoryPosition]);
-
 	return (
 		<div>
 			<Sidebar />
