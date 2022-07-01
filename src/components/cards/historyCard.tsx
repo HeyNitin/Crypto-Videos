@@ -44,13 +44,13 @@ const HistoryCard = ({
 			className="flex flex-col sm:flex-row shadow-card p-4 gap-4 cursor-pointer"
 		>
 			<img src={img} alt="thumbnail" className=" sm:w-1/4 rounded-md"></img>
-			<div className="flex flex-col sm:w-2/4">
+			<div className="flex flex-col sm:w-2/4 gap-2">
 				<div className="flex">
 					<p className="truncate max-w-2xl font-semibold">{title}</p>
 				</div>
 				<div className="flex items-center gap-2">
 					<img
-						className="rounded-full h-8 w-8 m-2 mt-0"
+						className="rounded-full h-8 w-8 m-2"
 						src={creatorProfile}
 						alt="creator-profle"
 					></img>

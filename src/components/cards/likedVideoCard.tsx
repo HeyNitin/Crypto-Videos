@@ -1,14 +1,14 @@
 import { useAuth } from "contexts/authContext/authContext";
 import { video } from "contexts/videoContext/videoContext.type";
 import { useNavigate } from "react-router-dom";
-import { removeFromWatchLater } from "services/watchLaterServices/removeFromWatchLater";
+import { removeFromLikedVideos } from "services/likedVideosServices/removeFromLikedVideos";
 
-const WatchLaterCard = ({
+const LikedVideoCard = ({
 	video,
-	setWatchLater,
+	setLikedVideos,
 }: {
 	video: video;
-	setWatchLater: Function;
+	setLikedVideos: Function;
 }): JSX.Element => {
 	const {
 		_id,
@@ -62,7 +62,7 @@ const WatchLaterCard = ({
 			<span
 				onClick={(e) => {
 					e.stopPropagation();
-					removeFromWatchLater({ _id, setWatchLater, token });
+					removeFromLikedVideos({ _id, setLikedVideos, token });
 				}}
 				className="material-symbols-outlined ml-auto cursor-pointer h-8 font- hover:bg-slate-200 dark:hover:bg-slate-500 text-2xl px-2"
 			>
@@ -72,4 +72,4 @@ const WatchLaterCard = ({
 	);
 };
 
-export { WatchLaterCard };
+export { LikedVideoCard };

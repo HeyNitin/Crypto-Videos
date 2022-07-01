@@ -9,6 +9,8 @@ import { Sidebar } from "components/sidebar/sidebar";
 import { useAuth } from "contexts/authContext/authContext";
 import { useWatchLater } from "contexts/watchLaterContext/watchLaterContext";
 import { removeFromWatchLater } from "services/watchLaterServices/removeFromWatchLater";
+import { useLikedVideos } from "contexts/likedVideosContext/likedVideosContext";
+import { removeFromLikedVideos } from "services/likedVideosServices/removeFromLikedVideos";
 
 const VideoPage = () => {
 	const { videoId } = useParams();
@@ -18,6 +20,8 @@ const VideoPage = () => {
 	const Navigate = useNavigate();
 	const location = useLocation();
 	const [inWatchlist, setInWatchlist] = useState(false);
+	const [inLiked, setInLiked] = useState(false);
+	const { likedVideos, setLikedVideos } = useLikedVideos();
 
 	useDocumentTitle(video?.title || "Video");
 
@@ -72,6 +76,16 @@ const VideoPage = () => {
 		}
 	}, [watchLater, videoId]);
 
+	useEffect(() => {
+		setInLiked(false);
+		for (let item of likedVideos) {
+			if (item._id === videoId) {
+				setInLiked(true);
+				break;
+			}
+		}
+	}, [likedVideos, videoId]);
+
 	const addToWatchLater = async () => {
 		if (token) {
 			try {
@@ -86,6 +100,29 @@ const VideoPage = () => {
 				showToast(
 					"error",
 					"Something went wrong while trying to add item to watch later"
+				);
+			}
+		} else {
+			Navigate("/login", {
+				state: { from: { pathname: location.pathname } },
+			});
+		}
+	};
+
+	const addToLikedVideos = async () => {
+		if (token) {
+			try {
+				const res = await axios.post(
+					"/api/user/likes",
+					{ video },
+					{ headers: { authorization: token } }
+				);
+				setLikedVideos(res.data.likes);
+				showToast("success", "item has been added to liked videos");
+			} catch (error) {
+				showToast(
+					"error",
+					"Something went wrong while trying to add item to liked videos"
 				);
 			}
 		} else {
@@ -134,9 +171,28 @@ const VideoPage = () => {
 								</div>
 							</div>
 						</div>
-						<div className="ml-auto flex gap-1 cursor-pointer">
-							<span className="material-symbols-outlined">thumb_up</span>
-							<p className="font-semibold">LIKE</p>
+						<div
+							onClick={() =>
+								inLiked
+									? token
+										? removeFromLikedVideos({
+												_id: video?._id || "",
+												token,
+												setLikedVideos,
+										  })
+										: Navigate("/login", {
+												state: { from: { pathname: location.pathname } },
+										  })
+									: addToLikedVideos()
+							}
+							className="ml-auto flex gap-1 cursor-pointer"
+						>
+							{inLiked ? (
+								<span className="material-icons-outlined">thumb_up</span>
+							) : (
+								<span className="material-symbols-outlined">thumb_up</span>
+							)}
+							<p className="font-semibold">{inLiked ? "LIKED" : "LIKE"}</p>
 						</div>
 						<div
 							onClick={() =>
