@@ -1,10 +1,13 @@
 import { useAuth } from "contexts/authContext/authContext";
 import { showToast } from "components/toast/toast";
 import { useNavigate } from "react-router-dom";
+import { useDocumentTitle } from "hooks/useDocumentTitle";
 
 const Profile = (): JSX.Element => {
 	const { user, setToken, setUser } = useAuth();
 	const Navigate = useNavigate();
+
+	useDocumentTitle("Profile");
 
 	const logoutHandler = () => {
 		setToken("");

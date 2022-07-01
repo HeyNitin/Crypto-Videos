@@ -6,10 +6,13 @@ import { useParams } from "react-router-dom";
 import { video } from "contexts/videoContext/videoContext.type";
 import { getVideoId } from "services/getVideoIdService";
 import { Sidebar } from "components/sidebar/sidebar";
+import { useAuth } from "contexts/authContext/authContext";
 
 const VideoPage = () => {
 	const { videoId } = useParams();
 	const [video, setVideo] = useState<video>();
+	const { token } = useAuth();
+	// const [changeHistoryPosition, setChangeHistoryPosition] = useState(false);
 
 	useDocumentTitle(video?.title || "Video");
 
@@ -28,6 +31,58 @@ const VideoPage = () => {
 			}
 		})();
 	}, [videoId]);
+
+	useEffect(() => {
+		if (token && video) {
+			(async () => {
+				try {
+					await axios.post(
+						"/api/user/history",
+						{ video },
+						{
+							headers: { authorization: token },
+						}
+					);
+				} catch (error) {
+					if (
+						(error as { response: { status: Number } }).response.status === 409
+					) {
+						// setChangeHistoryPosition(true);
+					} else {
+						showToast("error", "Something went wrong");
+					}
+				}
+			})();
+		}
+	}, [video, token, videoId]);
+
+	// useEffect(() => {
+	// 	if (changeHistoryPosition && token) {
+	// 		(async () => {
+	// 			try {
+	// 				let response = await axios.get("api/user/history", {
+	// 					headers: { authorization: token },
+	// 				});
+	// 				console.log("history", response);
+	// 				response = await axios.delete(`api/user/history/${videoId}`, {
+	// 					headers: { authorization: token },
+	// 				});
+	// 				console.log("deleted from history", response);
+	// 				response = await axios.post(
+	// 					"/api/user/history",
+	// 					{ video },
+	// 					{
+	// 						headers: { authorization: token },
+	// 					}
+	// 				);
+	// 				console.log("added to history after deletion", response);
+	// 			} catch (error) {
+	// 				console.log(error);
+	// 				showToast("error", "Something went wrong");
+	// 			}
+	// 		})();
+	// 	}
+	// }, [token, video, videoId, changeHistoryPosition]);
 
 	return (
 		<div>
@@ -73,12 +128,12 @@ const VideoPage = () => {
 							<p className="cursor-pointer font-semibold">LIKE</p>
 						</div>
 						<div className="flex gap-1">
-							<span className="material-icons-outlined">playlist_add</span>
-							<p className="cursor-pointer font-semibold">SAVE TO PLAYLIST</p>
-						</div>
-						<div className="flex gap-1">
 							<span className="material-icons-outlined">watch_later</span>
 							<p className="cursor-pointer font-semibold">WATCH LATER</p>
+						</div>
+						<div className="flex gap-1">
+							<span className="material-icons-outlined">playlist_add</span>
+							<p className="cursor-pointer font-semibold">SAVE TO PLAYLIST</p>
 						</div>
 					</div>
 					<div>{video?.description}</div>
