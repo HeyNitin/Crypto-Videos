@@ -1,13 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { video } from "contexts/videoContext/videoContext.type";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const VideoCard = ({ value }: { value: video }): JSX.Element => {
 	const { _id, img, creatorProfile, creator, title, views, videoLength } =
 		value;
 	const Navigate = useNavigate();
-	const location = useLocation();
 
 	return (
 		<div
@@ -27,29 +24,13 @@ const VideoCard = ({ value }: { value: video }): JSX.Element => {
 					src={creatorProfile}
 					alt="creator-profle"
 				></img>
-				<div className="truncate p-2">
+				<div className="truncate p-2 w-full">
 					<p className="truncate text-sm font-semibold">{title}</p>
 					<p className="text-xs">{creator}</p>
-					<div className="text-xs flex items-center gap-1">
-						<span className="material-icons-outlined text-sm pt-0.5">
-							visibility
-						</span>
+					<div className="text-xs flex items-center gap-1 box-border">
+						<span className="material-icons-outlined text-sm">visibility</span>
 						<p>{views} views</p>
-					</div>
-				</div>
-				<div className="flex flex-col justify-end">
-					<FontAwesomeIcon
-						onClick={(e) => {
-							e.stopPropagation();
-							Navigate("/login", {
-								state: { from: { pathname: location.pathname } },
-							});
-						}}
-						icon={faEllipsisVertical}
-						className={"w-4 ml-auto pt-4 pr-2"}
-					/>
-					<div className="flex flex-row items-center  p-2 text-xs mt-1.5">
-						<span className="material-icons-outlined text-sm pt-0.5">
+						<span className="material-icons-outlined text-sm ml-auto">
 							timer
 						</span>
 						<p>{videoLength}</p>

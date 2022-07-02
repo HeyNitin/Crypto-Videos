@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 /**
  * Videos Database can be added here.
  * You can add videos of your wish with different attributes
@@ -6,7 +5,7 @@ import { v4 as uuid } from "uuid";
 
 export const videos = [
 	{
-		_id: uuid(),
+		_id: "iFAc91miTMY",
 		img: "https://i.postimg.cc/2j79H27n/thumbnail-01.jpg",
 		title:
 			"What is Bitcoin & Cryptocurrency? How to earn and invest? Easy explanation by Him eesh Madaan",
@@ -21,7 +20,7 @@ export const videos = [
 		category: "Crypto",
 	},
 	{
-		_id: uuid(),
+		_id: "oXlH9Ju4PIk",
 		img: "https://i.postimg.cc/nLD0yTNL/thumbnail-05.jpg",
 		title:
 			"Crypto News Today: Cryptocurrency Tax, TDS Latest Update Hindi |Crypto Market Crash | Shiba Inu Coin",
@@ -35,7 +34,7 @@ export const videos = [
 		category: "Crypto",
 	},
 	{
-		_id: uuid(),
+		_id: "3bAvAlCIVTI",
 		img: "https://i.postimg.cc/RVz8VywK/thumbnail-06.jpg",
 		title:
 			"DIP keeps Dipping | Bear Market Investing Crypto Stock Strategy | Crypto Jargon",
@@ -50,7 +49,7 @@ export const videos = [
 		category: "Crypto",
 	},
 	{
-		_id: uuid(),
+		_id: "2_TK1Go8clQ",
 		img: "https://i.postimg.cc/TPzwyTdT/thumbnail-07.jpg",
 		title: "We're Heading To $0 | Explained",
 		description: "Explaining how crypto and Bitcoin is all headed to $0:",
@@ -63,7 +62,7 @@ export const videos = [
 		category: "Crypto",
 	},
 	{
-		_id: uuid(),
+		_id: "rlXguHJqTkY",
 		img: "https://i.postimg.cc/L56BWtrC/thumbnail-08.jpg",
 		title: "Will bitcoin rise again ? Top 7 coins in 2022 Market crash",
 		description:
@@ -77,7 +76,7 @@ export const videos = [
 		category: "Crypto",
 	},
 	{
-		_id: uuid(),
+		_id: "SSo_EIwHSd4",
 		img: "https://i.postimg.cc/7PShwmZY/thumbnail-04.jpg",
 		title: "How does a blockchain work - Simply Explained",
 		description:
@@ -91,7 +90,7 @@ export const videos = [
 		category: "Blockchain",
 	},
 	{
-		_id: uuid(),
+		_id: "YJyXfjbBmc8",
 		img: "https://i.postimg.cc/xdxqyBK4/thumbnail-09.jpg",
 		title: "All about Blockchain | Simply Explained",
 		description:
@@ -105,7 +104,7 @@ export const videos = [
 		category: "Blockchain",
 	},
 	{
-		_id: uuid(),
+		_id: "ENrjn-lD1e8",
 		img: "https://i.postimg.cc/xdzM8frP/thumbnail-10.jpg",
 		title:
 			"What is Blockchain? How Elections on Blockchain work? | Bitcoin | Dhruv Rathee",
@@ -120,7 +119,7 @@ export const videos = [
 		category: "Blockchain",
 	},
 	{
-		_id: uuid(),
+		_id: "hYip_Vuv8J0",
 		img: "https://i.postimg.cc/Vvf8GWXH/thumbnail-11.jpg",
 		title:
 			"Blockchain Expert Explains One Concept in 5 Levels of Difficulty | WIRED",
@@ -134,7 +133,7 @@ export const videos = [
 		category: "Blockchain",
 	},
 	{
-		_id: uuid(),
+		_id: "YrHCD7nx29o",
 		img: "https://i.postimg.cc/FFYyBXHm/thumbnail-12.jpg",
 		title: "How I would learn blockchain if I had to start over",
 		description:
@@ -148,7 +147,7 @@ export const videos = [
 		category: "Blockchain",
 	},
 	{
-		_id: uuid(),
+		_id: "wHTcrmhskto",
 		img: "https://i.postimg.cc/m2NwZD5M/thumbnail-02.jpg",
 		title: "Is Web3 all Hype? Top 10 Web 3.0 Questions & Answers",
 		description:
@@ -162,7 +161,7 @@ export const videos = [
 		category: "Web 3.0",
 	},
 	{
-		_id: uuid(),
+		_id: "nHhAEkG1y2U",
 		img: "https://i.postimg.cc/KYy6z54p/thumbnail-13.jpg",
 		title: "What is Web 3.0? (Explained with Animations)",
 		description:
@@ -176,7 +175,7 @@ export const videos = [
 		category: "Web 3.0",
 	},
 	{
-		_id: uuid(),
+		_id: "XiWLLepUL-s",
 		img: "https://i.postimg.cc/pLdwndBz/thumbnail-14.jpg",
 		title: "What is WEB3 (in Hindi)? | Is WEB3 a scam? | Abhi and Niyu",
 		description:
@@ -190,7 +189,7 @@ export const videos = [
 		category: "Web 3.0",
 	},
 	{
-		_id: uuid(),
+		_id: "eAMCcnxXLhM",
 		img: "https://i.postimg.cc/X7th10Sy/thumbnail-15.jpg",
 		title: "What is Web3, and is it the future of the internet?",
 		description:
@@ -204,7 +203,7 @@ export const videos = [
 		category: "Web 3.0",
 	},
 	{
-		_id: uuid(),
+		_id: "hDc4AI_gjxw",
 		img: "https://i.postimg.cc/Zn47zTYw/thumbnail-16.jpg",
 		title: "why i left Web 3... (as an ex-Google software engineer)",
 		description: "Why #Web3 sucks bad.",
@@ -217,7 +216,7 @@ export const videos = [
 		category: "Web 3.0",
 	},
 	{
-		_id: uuid(),
+		_id: "as7acW3B2jA",
 		img: "https://i.postimg.cc/W1Km4kT9/thumbnail-03.jpg",
 		title:
 			"NFTs explained in 10 minutes | Non Fungible Tokens | Ankur Warikoo Hindi",
@@ -232,7 +231,7 @@ export const videos = [
 		category: "NFTs",
 	},
 	{
-		_id: uuid(),
+		_id: "_0hhgW4YCLs",
 		img: "https://i.postimg.cc/vZ6Mqz43/thumbnail-17.jpg",
 		title: "What are NFTs? Simply Explained | Non-Fungible Token",
 		description:
@@ -246,7 +245,7 @@ export const videos = [
 		category: "NFTs",
 	},
 	{
-		_id: uuid(),
+		_id: "JEMkCSSSEt0",
 		img: "https://i.postimg.cc/4xM0MkD9/thumbnail-18.jpg",
 		title:
 			"How To Sell NFT Online - Best Tutorial for Beginners - Mom's Reaction on NFT - Sahil Gera",
@@ -261,7 +260,7 @@ export const videos = [
 		category: "NFTs",
 	},
 	{
-		_id: uuid(),
+		_id: "EjH9GslMCB4",
 		img: "https://i.postimg.cc/BtWWdj7R/thumbnail-19.jpg",
 		title: "One year into NFTs — what I wish I knew when I started",
 		description:
@@ -275,7 +274,7 @@ export const videos = [
 		category: "NFTs",
 	},
 	{
-		_id: uuid(),
+		_id: "Gjo1hlIey9g",
 		img: "https://i.postimg.cc/FHGQWHms/thumbnail-20.jpg",
 		title: "How to Make and Sell an NFT (Crypto Art Tutorial)",
 		description:

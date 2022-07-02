@@ -2,15 +2,12 @@ import { useDocumentTitle } from "hooks/useDocumentTitle";
 import { Sidebar } from "components/sidebar/sidebar";
 import { VideoCard } from "components/cards/videoCard";
 import { useVideo } from "contexts/videoContext/videoContext";
-import axios from "axios";
-import { showToast } from "components/toast/toast";
-import { useEffect } from "react";
 import { video } from "contexts/videoContext/videoContext.type";
 
 const Explore = (): JSX.Element => {
 	const { state, dispatch } = useVideo();
 
-	const applyFilteres = (product: video) => {
+	const applyFilters = (product: video) => {
 		return state.All
 			? true
 			: state.Blockchain
@@ -34,18 +31,7 @@ const Explore = (): JSX.Element => {
 
 	useDocumentTitle("Explore");
 
-	useEffect(() => {
-		(async () => {
-			try {
-				const res = await axios.get("/api/videos");
-				dispatch({ type: "Initialize", payload: res.data.videos });
-			} catch (error) {
-				showToast("error", "Something went wrong while trying to load videos");
-			}
-		})();
-	}, [dispatch]);
-
-	const filteredVideos = state.videos.filter(applyFilteres);
+	const filteredVideos = state.videos.filter(applyFilters);
 
 	return (
 		<div>
