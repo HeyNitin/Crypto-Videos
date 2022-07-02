@@ -3,13 +3,12 @@ import { childTypes, state } from "contexts/videoContext/videoContext.type";
 import { videoReducer } from "contexts/videoContext/videoReducer";
 
 const initialValue: state = {
-	All: false,
+	All: true,
 	Crypto: false,
 	"Web 3.0": false,
 	Blockchain: false,
 	NFTs: false,
 	videos: [],
-	filteredVideos: [],
 };
 
 const videoContext = createContext<{

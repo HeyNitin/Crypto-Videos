@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { CategoryCard } from "components/cards/categoryCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { categoryTypes } from "pages/homepage/categoryTypes.type";
-import { showToast } from "components/toast";
+import { categoryTypes } from "pages/homepage/homepageTypes.type";
+import { showToast } from "components/toast/toast";
 import { Footer } from "components/footer/footerComponent";
 import { useVideo } from "contexts/videoContext/videoContext";
 

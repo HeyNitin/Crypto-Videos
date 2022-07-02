@@ -1,8 +1,8 @@
 import { Header } from "components/header/headerComponent";
-import { Routes } from "components/routes";
+import { Routes } from "components/routes/routes";
 import { useState } from "react";
-import { Toast } from "components/toast";
-import { Navbar } from "components/navbar";
+import { Toast } from "components/toast/toast";
+import { Navbar } from "components/navbar/navbar";
 
 function App() {
 	const [darkMode, setDarkMode] = useState<Boolean>(false);

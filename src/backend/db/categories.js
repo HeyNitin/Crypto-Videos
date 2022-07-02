@@ -9,20 +9,20 @@ export const categories = [
 	{
 		_id: uuid(),
 		categoryName: "Crypto",
-		img: "https://i.postimg.cc/zBB7Pp3X/thumbnail-01.jpg",
+		img: "https://i.postimg.cc/2j79H27n/thumbnail-01.jpg",
 		ytLink:
 			"https://www.youtube.com/watch?v=iFAc91miTMY&ab_channel=Him-eeshMadaan",
 	},
 	{
 		_id: uuid(),
 		categoryName: "Web 3.0",
-		img: "https://i.postimg.cc/131wHf7J/thumbnail-02.jpg",
+		img: "https://i.postimg.cc/m2NwZD5M/thumbnail-02.jpg",
 		ytLink: "https://www.youtube.com/watch?v=wHTcrmhskto&ab_channel=Fireship",
 	},
 	{
 		_id: uuid(),
 		categoryName: "NFTs",
-		img: "https://i.postimg.cc/NFv0Rrpc/thumbnail-03.jpg",
+		img: "https://i.postimg.cc/W1Km4kT9/thumbnail-03.jpg",
 		ytLink: "https://www.youtube.com/watch?v=as7acW3B2jA&ab_channel=warikoo",
 	},
 	{

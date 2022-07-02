@@ -4,31 +4,28 @@ import { faMoon, faSun, faBars } from "@fortawesome/free-solid-svg-icons";
 import { headerTypes } from "components/header/headerTypes.type";
 import { useEffect } from "react";
 import { useVideo } from "contexts/videoContext/videoContext";
-import axios from "axios";
-import { showToast } from "components/toast";
+import { useAuth } from "contexts/authContext/authContext";
+import { showToast } from "components/toast/toast";
 
 const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 	const Navigate = useNavigate();
 	const { dispatch } = useVideo();
+	const { token, setToken } = useAuth();
 
 	useEffect(() => {
 		const theme = localStorage.getItem("theme");
 		theme === "true" && setDarkMode(true);
 	}, [setDarkMode]);
 
-	useEffect(() => {
-		(async () => {
-			try {
-				const res = await axios.get("/api/videos");
-				dispatch({ type: "Initialize", payload: res.data.videos });
-			} catch (error) {
-				showToast("error", "Something went wrong while trying to load videos");
-			}
-		})();
-	}, [dispatch]);
-
 	const loginHandler = () => {
 		Navigate("/login");
+	};
+
+	const logoutHandler = () => {
+		setToken("");
+		localStorage.removeItem("token");
+		Navigate("/");
+		showToast("success", "You're successfully logged out");
 	};
 
 	const themeHandler = () => {
@@ -61,12 +58,21 @@ const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 			>
 				<FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
 			</div>
-			<button
-				onClick={() => loginHandler()}
-				className="hidden lg:flex h-10 text-xl p-4 ml-8 border-2 dark:border-white border-black drop-shadow-2xl items-center rounded-md"
-			>
-				Login
-			</button>
+			{token ? (
+				<button
+					onClick={() => logoutHandler()}
+					className="hidden lg:flex h-10 text-xl p-4 ml-8 border-2 dark:border-white border-black drop-shadow-2xl items-center rounded-md"
+				>
+					Logout
+				</button>
+			) : (
+				<button
+					onClick={() => loginHandler()}
+					className="hidden lg:flex h-10 text-xl p-4 ml-8 border-2 dark:border-white border-black drop-shadow-2xl items-center rounded-md"
+				>
+					Login
+				</button>
+			)}
 		</header>
 	);
 };

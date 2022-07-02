@@ -5,13 +5,7 @@ export const videoReducer = (state: state, action: action) => {
 		case "Initialize":
 			return {
 				...state,
-				All: true,
-				"Web 3.0": false,
-				Blockchain: false,
-				NFTs: false,
-				Crypto: false,
 				videos: action.payload,
-				filteredVideos: action.payload,
 			};
 		case "All":
 			return {
@@ -21,7 +15,6 @@ export const videoReducer = (state: state, action: action) => {
 				Blockchain: false,
 				NFTs: false,
 				Crypto: false,
-				filteredVideos: state.videos,
 			};
 		case "Blockchain":
 			return {
@@ -31,9 +24,6 @@ export const videoReducer = (state: state, action: action) => {
 				Blockchain: true,
 				NFTs: false,
 				Crypto: false,
-				filteredVideos: state.videos.filter(
-					(item) => item.category === action.type
-				),
 			};
 		case "Web 3.0":
 			return {
@@ -43,9 +33,6 @@ export const videoReducer = (state: state, action: action) => {
 				Blockchain: false,
 				NFTs: false,
 				Crypto: false,
-				filteredVideos: state.videos.filter(
-					(item) => item.category === action.type
-				),
 			};
 		case "NFTs":
 			return {
@@ -55,9 +42,6 @@ export const videoReducer = (state: state, action: action) => {
 				Blockchain: false,
 				NFTs: true,
 				Crypto: false,
-				filteredVideos: state.videos.filter(
-					(item) => item.category === action.type
-				),
 			};
 		case "Crypto":
 			return {
@@ -67,9 +51,6 @@ export const videoReducer = (state: state, action: action) => {
 				Blockchain: false,
 				NFTs: false,
 				Crypto: true,
-				filteredVideos: state.videos.filter(
-					(item) => item.category === action.type
-				),
 			};
 
 		default:
