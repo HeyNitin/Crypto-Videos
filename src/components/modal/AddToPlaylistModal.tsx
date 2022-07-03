@@ -1,11 +1,12 @@
 import axios from "axios";
 import { showToast } from "components/toast/toast";
 import { useAuth } from "contexts/authContext/authContext";
-import { usePlayList } from "contexts/playListContext/playListContext";
-import { playListTypes } from "contexts/playListContext/playListContext.type";
+import { usePlayLists } from "contexts/playListsContext/playListsContext";
+import { playListTypes } from "contexts/playListsContext/playListsContext.type";
 import { video } from "contexts/videoContext/videoContext.type";
 import { useEffect, useState } from "react";
 import { removeFromLikedVideos } from "services/likedVideosServices/removeFromLikedVideos";
+import { removeFromPlaylist } from "services/playlistServices/removeFromPlaylistService";
 import { removeFromWatchLater } from "services/watchLaterServices/removeFromWatchLater";
 
 const AddToPlaylistModal = ({
@@ -30,22 +31,22 @@ const AddToPlaylistModal = ({
 	const [isAddingPlaylist, setIsAddingPlaylist] = useState(false);
 	const [newPlaylistName, setNewPlaylistName] = useState("");
 	const { token } = useAuth();
-	const { playList, setPlayList } = usePlayList();
+	const { playLists, setPlayLists } = usePlayLists();
 	const [inPlaylists, setInPlaylists] = useState<Array<string>>([]);
 
 	useEffect(() => {
 		let result: Array<string> = [];
-		for (let item of playList) {
+		for (let item of playLists) {
 			if (item.videos.find((data) => data._id === video._id)) {
 				result = [...result, item.title];
 			}
 		}
 		setInPlaylists(result);
-	}, [playList, video._id]);
+	}, [playLists, video._id]);
 
 	const createNewPlaylist = async () => {
 		if (
-			playList.filter((item) => item.title === newPlaylistName).length === 0
+			playLists.filter((item) => item.title === newPlaylistName).length === 0
 		) {
 			try {
 				const res = await axios.post(
@@ -55,7 +56,7 @@ const AddToPlaylistModal = ({
 						headers: { authorization: token },
 					}
 				);
-				setPlayList(res.data.playlists);
+				setPlayLists(res.data.playlists);
 				setNewPlaylistName("");
 				showToast("success", `New Playlist ${newPlaylistName} created `);
 			} catch (error) {
@@ -76,7 +77,7 @@ const AddToPlaylistModal = ({
 					headers: { authorization: token },
 				}
 			);
-			setPlayList((prev: playListTypes[]) =>
+			setPlayLists((prev: playListTypes[]) =>
 				prev.map((item) =>
 					item._id === res.data.playlist._id
 						? { ...item, videos: res.data.playlist.videos }
@@ -86,27 +87,6 @@ const AddToPlaylistModal = ({
 			showToast("success", `Video has been added to ${title}`);
 		} catch (error) {
 			showToast("error", `Couldn't add video to ${title}`);
-		}
-	};
-
-	const removeFronPlaylist = async (title: string, _id: string) => {
-		try {
-			const res = await axios.delete(
-				`/api/user/playlists/${_id}/${video._id}`,
-				{
-					headers: { authorization: token },
-				}
-			);
-			setPlayList((prev: playListTypes[]) =>
-				prev.map((item) =>
-					item._id === res.data.playlist._id
-						? { ...item, videos: res.data.playlist.videos }
-						: item
-				)
-			);
-			showToast("success", `Video has been removed from ${title}`);
-		} catch (error) {
-			showToast("error", `Couldn't remove video from ${title}`);
 		}
 	};
 
@@ -156,14 +136,20 @@ const AddToPlaylistModal = ({
 					/>
 					<label htmlFor="liked-videos">Liked videos</label>
 				</div>
-				{playList.map(({ title, _id }: { title: string; _id: string }) => {
+				{playLists.map(({ title, _id }: { title: string; _id: string }) => {
 					return (
 						<div key={_id} className="cursor-pointer flex items-center gap-2">
 							<input
 								onChange={(e) =>
 									(e.target as HTMLInputElement).checked
 										? addToPlaylist(title, _id)
-										: removeFronPlaylist(title, _id)
+										: removeFromPlaylist({
+												video,
+												title,
+												_id,
+												setPlayLists,
+												token,
+										  })
 								}
 								type={"checkbox"}
 								id={title}

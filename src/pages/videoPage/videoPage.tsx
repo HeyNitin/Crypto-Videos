@@ -160,17 +160,17 @@ const VideoPage = () => {
 						</div>
 						<div
 							onClick={() =>
-								inLiked
-									? token
+								token
+									? inLiked
 										? removeFromLikedVideos({
 												_id: video?._id || "",
 												token,
 												setLikedVideos,
 										  })
-										: Navigate("/login", {
-												state: { from: { pathname: location.pathname } },
-										  })
-									: addToLikedVideos()
+										: addToLikedVideos()
+									: Navigate("/login", {
+											state: { from: { pathname: location.pathname } },
+									  })
 							}
 							className="ml-auto flex gap-1 cursor-pointer items-center"
 						>
@@ -183,17 +183,17 @@ const VideoPage = () => {
 						</div>
 						<div
 							onClick={() =>
-								inWatchlist
-									? token
+								token
+									? inWatchlist
 										? removeFromWatchLater({
 												_id: video?._id || "",
 												token,
 												setWatchLater,
 										  })
-										: Navigate("/login", {
-												state: { from: { pathname: location.pathname } },
-										  })
-									: addToWatchLater()
+										: addToWatchLater()
+									: Navigate("/login", {
+											state: { from: { pathname: location.pathname } },
+									  })
 							}
 							className="flex gap-1 cursor-pointer items-center"
 						>

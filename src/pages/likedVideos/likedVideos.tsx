@@ -7,10 +7,12 @@ import axios from "axios";
 import { useAuth } from "contexts/authContext/authContext";
 import { video } from "contexts/videoContext/videoContext.type";
 import { LikedVideoCard } from "components/cards/likedVideoCard";
+import { useNavigate } from "react-router-dom";
 
 const LikedVideos = (): JSX.Element => {
 	const { likedVideos, setLikedVideos } = useLikedVideos();
 	const { token } = useAuth();
+	const Navigate = useNavigate();
 
 	useEffect(() => {
 		(async () => {
@@ -28,7 +30,7 @@ const LikedVideos = (): JSX.Element => {
 		})();
 	}, [setLikedVideos, token]);
 
-	useDocumentTitle("Liked-videos");
+	useDocumentTitle("Liked videos");
 	return (
 		<div>
 			<Sidebar />
@@ -42,13 +44,25 @@ const LikedVideos = (): JSX.Element => {
 					</p>
 				</div>
 				<div className="flex flex-col gap-8">
-					{likedVideos.map((item: video) => (
-						<LikedVideoCard
-							key={item._id}
-							video={item}
-							setLikedVideos={setLikedVideos}
-						/>
-					))}
+					{likedVideos.length ? (
+						likedVideos.map((item: video) => (
+							<LikedVideoCard
+								key={item._id}
+								video={item}
+								setLikedVideos={setLikedVideos}
+							/>
+						))
+					) : (
+						<p className="mx-auto">
+							Nothing is in here yet.{" "}
+							<span
+								onClick={() => Navigate("/explore")}
+								className="font-semibold hover:underline cursor-pointer"
+							>
+								Go to explore page
+							</span>
+						</p>
+					)}
 				</div>
 			</div>
 		</div>

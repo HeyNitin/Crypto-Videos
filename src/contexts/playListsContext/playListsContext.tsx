@@ -1,5 +1,5 @@
 import axios from "axios";
-import { playListTypes } from "contexts/playListContext/playListContext.type";
+import { playListTypes } from "contexts/playListsContext/playListsContext.type";
 import {
 	createContext,
 	ReactNode,
@@ -10,20 +10,20 @@ import {
 import { useAuth } from "contexts/authContext/authContext";
 import { showToast } from "components/toast/toast";
 
-const playListContext = createContext<{
-	playList: Array<playListTypes>;
-	setPlayList: Function;
+const playListsContext = createContext<{
+	playLists: Array<playListTypes>;
+	setPlayLists: Function;
 }>({
-	playList: [],
-	setPlayList: () => {},
+	playLists: [],
+	setPlayLists: () => {},
 });
 
-const PlayListProvider = ({
+const PlayListsProvider = ({
 	children,
 }: {
 	children: ReactNode;
 }): JSX.Element => {
-	const [playList, setPlayList] = useState([]);
+	const [playLists, setPlayLists] = useState([]);
 	const { token } = useAuth();
 
 	useEffect(() => {
@@ -33,7 +33,7 @@ const PlayListProvider = ({
 					const res = await axios.get("/api/user/playlists", {
 						headers: { authorization: token },
 					});
-					setPlayList(res.data.playlists);
+					setPlayLists(res.data.playlists);
 				} catch (error) {
 					showToast("error", "Something went wrong");
 				}
@@ -41,12 +41,12 @@ const PlayListProvider = ({
 	}, [token]);
 
 	return (
-		<playListContext.Provider value={{ playList, setPlayList }}>
+		<playListsContext.Provider value={{ playLists, setPlayLists }}>
 			{children}
-		</playListContext.Provider>
+		</playListsContext.Provider>
 	);
 };
 
-const usePlayList = () => useContext(playListContext);
+const usePlayLists = () => useContext(playListsContext);
 
-export { PlayListProvider, usePlayList };
+export { PlayListsProvider, usePlayLists };
