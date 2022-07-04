@@ -91,7 +91,7 @@ const AddToPlaylistModal = ({
 	};
 
 	return (
-		<div className="absolute bottom-2/4 left-0 right-0 ml-auto mr-auto w-72 cursor-pointer z-30 bg-white dark:bg-slate-600 shadow-card rounded-md flex flex-col">
+		<div className="absolute bottom-2/4 lg:bottom-1/3 right-0 left-0 mx-auto w-72 cursor-pointer z-30 bg-white dark:bg-slate-600 shadow-card rounded-md flex flex-col">
 			<div className="flex flex-row dark:border-slate-600 dark:border-b-white border-b-black border p-2 rounded-md">
 				<p className="text-lg">Save to...</p>
 				<span

@@ -1,34 +1,13 @@
 import { useDocumentTitle } from "hooks/useDocumentTitle";
 import { Sidebar } from "components/sidebar/sidebar";
-import { useEffect } from "react";
 import { useLikedVideos } from "contexts/likedVideosContext/likedVideosContext";
-import { showToast } from "components/toast/toast";
-import axios from "axios";
-import { useAuth } from "contexts/authContext/authContext";
 import { video } from "contexts/videoContext/videoContext.type";
 import { LikedVideoCard } from "components/cards/likedVideoCard";
 import { useNavigate } from "react-router-dom";
 
 const LikedVideos = (): JSX.Element => {
 	const { likedVideos, setLikedVideos } = useLikedVideos();
-	const { token } = useAuth();
 	const Navigate = useNavigate();
-
-	useEffect(() => {
-		(async () => {
-			try {
-				const res = await axios.get("/api/user/likes", {
-					headers: { authorization: token },
-				});
-				setLikedVideos(res.data.likes);
-			} catch {
-				showToast(
-					"error",
-					"Something went wrong while trying to load liked videos"
-				);
-			}
-		})();
-	}, [setLikedVideos, token]);
 
 	useDocumentTitle("Liked videos");
 	return (

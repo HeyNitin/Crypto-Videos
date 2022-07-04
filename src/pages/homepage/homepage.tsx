@@ -6,11 +6,9 @@ import axios from "axios";
 import { categoryTypes } from "pages/homepage/homepageTypes.type";
 import { showToast } from "components/toast/toast";
 import { Footer } from "components/footer/footerComponent";
-import { useVideo } from "contexts/videoContext/videoContext";
 
 const Homepage = (): JSX.Element => {
 	const [categories, setCategories] = useState([]);
-	const { dispatch } = useVideo();
 
 	useDocumentTitle("Homepage");
 
@@ -34,7 +32,6 @@ const Homepage = (): JSX.Element => {
 					alt="hero img"
 				></img>
 				<Link
-					onClick={() => dispatch({ type: "All" })}
 					className="c=>ol-start-1  col-end-2 row-start-2 row-end-3 text-white justify-self-center mb-2 lg:mb-4 bg-red-500 rounded-sm p-2 px-8 items-center"
 					to={"/explore"}
 				>

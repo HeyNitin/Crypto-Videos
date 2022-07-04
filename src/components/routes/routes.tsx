@@ -17,7 +17,7 @@ import { PlaylistPage } from "pages/playlistPage/playlistPage";
 
 const Routes = (): JSX.Element => {
 	return (
-		<div className=" mt-20 min-h-[calc(100vh-5rem)] dark:bg-slate-600 dark:text-white">
+		<div className=" min-h-[calc(100vh-5rem)] dark:bg-slate-600 dark:text-white">
 			<R>
 				<Route path="/" element={<Homepage />} />
 				<Route path="/explore" element={<Explore />} />
