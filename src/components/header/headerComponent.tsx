@@ -1,32 +1,26 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun, faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+	faMoon,
+	faSun,
+	faBars,
+	faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { headerTypes } from "components/header/headerTypes.type";
 import { useEffect } from "react";
 import { useVideo } from "contexts/videoContext/videoContext";
 import { useAuth } from "contexts/authContext/authContext";
-import { showToast } from "components/toast/toast";
+import { getFirstName } from "services/getFirstNameService";
 
 const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 	const Navigate = useNavigate();
 	const { dispatch } = useVideo();
-	const { token, setToken } = useAuth();
+	const { token, user } = useAuth();
 
 	useEffect(() => {
 		const theme = localStorage.getItem("theme");
 		theme === "true" && setDarkMode(true);
 	}, [setDarkMode]);
-
-	const loginHandler = () => {
-		Navigate("/login");
-	};
-
-	const logoutHandler = () => {
-		setToken("");
-		localStorage.removeItem("token");
-		Navigate("/");
-		showToast("success", "You're successfully logged out");
-	};
 
 	const themeHandler = () => {
 		setDarkMode((prev: boolean) => {
@@ -58,21 +52,20 @@ const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 			>
 				<FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
 			</div>
-			{token ? (
-				<button
-					onClick={() => logoutHandler()}
-					className="hidden lg:flex h-10 text-xl p-4 ml-8 border-2 dark:border-white border-black drop-shadow-2xl items-center rounded-md"
-				>
-					Logout
-				</button>
-			) : (
-				<button
-					onClick={() => loginHandler()}
-					className="hidden lg:flex h-10 text-xl p-4 ml-8 border-2 dark:border-white border-black drop-shadow-2xl items-center rounded-md"
-				>
-					Login
-				</button>
-			)}
+			<div
+				onClick={() => (token ? Navigate("/profile") : Navigate("/login"))}
+				className="cursor-pointer flex flex-col ml-4 w-20"
+			>
+				<FontAwesomeIcon
+					className="text-2xl self-center text-black hover:text-slate-700 dark:text-slate-300 dark:hover:text-white"
+					icon={faUser}
+				/>
+				{token ? (
+					<p className="self-center">Hello, {getFirstName(user.name)}</p>
+				) : (
+					<p className="self-center">Login</p>
+				)}
+			</div>
 		</header>
 	);
 };
