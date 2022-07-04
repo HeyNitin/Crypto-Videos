@@ -4,10 +4,16 @@ import { video } from "contexts/videoContext/videoContext.type";
 import { useNavigate } from "react-router-dom";
 
 const VideoCard = ({ value }: { value: video }): JSX.Element => {
-	const { img, creatorProfile, creator, title, views, videoLength } = value;
+	const { _id, img, creatorProfile, creator, title, views, videoLength } =
+		value;
 	const Navigate = useNavigate();
 	return (
-		<div className="shadow-card m-4 cursor-pointer w-72 grid dark:bg-white">
+		<div
+			onClick={() => {
+				Navigate(`/videos/${_id}`);
+			}}
+			className="shadow-card m-4 cursor-pointer w-72 grid dark:bg-white"
+		>
 			<img
 				className="shadow-md col-start-1 col-end-2 row-start-1 row-end-3 p-1"
 				src={img}
@@ -31,7 +37,12 @@ const VideoCard = ({ value }: { value: video }): JSX.Element => {
 				</div>
 				<div className="flex flex-col justify-end">
 					<FontAwesomeIcon
-						onClick={() => Navigate("/login")}
+						onClick={(e) => {
+							e.stopPropagation();
+							Navigate("/login", {
+								state: { from: { pathname: "/explore" } },
+							});
+						}}
 						icon={faEllipsisVertical}
 						className={"w-4 ml-auto pt-4 pr-2"}
 					/>

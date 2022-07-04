@@ -12,6 +12,7 @@ import { Error } from "pages/error/error";
 import RequireAuth from "components/auth/requireAuth";
 import RequireNoAuth from "components/auth/requireNoAuth";
 import { Profile } from "pages/profile/profile";
+import { VideoPage } from "pages/videoPage/videoPage";
 
 const Routes = (): JSX.Element => {
 	return (
@@ -19,6 +20,7 @@ const Routes = (): JSX.Element => {
 			<R>
 				<Route path="/" element={<Homepage />} />
 				<Route path="/explore" element={<Explore />} />
+				<Route path="/videos/:videoId" element={<VideoPage />} />
 				<Route
 					path="/playlists"
 					element={
