@@ -5,9 +5,9 @@ import { usePlayLists } from "contexts/playListsContext/playListsContext";
 import { playListTypes } from "contexts/playListsContext/playListsContext.type";
 import { video } from "contexts/videoContext/videoContext.type";
 import { useEffect, useState } from "react";
-import { removeFromLikedVideos } from "services/likedVideosServices/removeFromLikedVideos";
-import { removeFromPlaylist } from "services/playlistServices/removeFromPlaylistService";
-import { removeFromWatchLater } from "services/watchLaterServices/removeFromWatchLater";
+import { removeFromLikedVideos } from "services/likedVideosServices";
+import { removeFromPlaylist } from "services/playlistServices";
+import { removeFromWatchLater } from "services/watchLaterServices";
 
 const AddToPlaylistModal = ({
 	setShowModal,

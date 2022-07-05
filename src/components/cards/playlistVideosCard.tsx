@@ -2,7 +2,7 @@ import { useAuth } from "contexts/authContext/authContext";
 import { playListTypes } from "contexts/playListsContext/playListsContext.type";
 import { video } from "contexts/videoContext/videoContext.type";
 import { useNavigate } from "react-router-dom";
-import { removeFromPlaylist } from "services/playlistServices/removeFromPlaylistService";
+import { removeFromPlaylist } from "services/playlistServices";
 
 const PlaylistVideoCart = ({
 	video,

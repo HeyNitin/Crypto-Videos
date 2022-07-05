@@ -1,6 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { categoryCardTypes } from "components/cards/categoryCardTypes.type";
 import { useVideo } from "contexts/videoContext/videoContext";
+
+type categoryCardTypes = {
+	id: number;
+	img: string;
+	title: string;
+	categoryName: string;
+};
 
 const CategoryCard = ({
 	id,

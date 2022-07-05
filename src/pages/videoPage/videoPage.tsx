@@ -7,9 +7,9 @@ import { video } from "contexts/videoContext/videoContext.type";
 import { Sidebar } from "components/sidebar/sidebar";
 import { useAuth } from "contexts/authContext/authContext";
 import { useWatchLater } from "contexts/watchLaterContext/watchLaterContext";
-import { removeFromWatchLater } from "services/watchLaterServices/removeFromWatchLater";
+import { removeFromWatchLater } from "services/watchLaterServices";
 import { useLikedVideos } from "contexts/likedVideosContext/likedVideosContext";
-import { removeFromLikedVideos } from "services/likedVideosServices/removeFromLikedVideos";
+import { removeFromLikedVideos } from "services/likedVideosServices";
 import { AddToPlaylistModal } from "components/modal/AddToPlaylistModal";
 
 const VideoPage = () => {

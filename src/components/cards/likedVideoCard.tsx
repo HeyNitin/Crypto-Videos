@@ -1,15 +1,17 @@
 import { useAuth } from "contexts/authContext/authContext";
 import { video } from "contexts/videoContext/videoContext.type";
 import { useNavigate } from "react-router-dom";
-import { removeFromLikedVideos } from "services/likedVideosServices/removeFromLikedVideos";
+import { removeFromLikedVideos } from "services/likedVideosServices";
+
+type likedVideosCardTypes = {
+	video: video;
+	setLikedVideos: Function;
+};
 
 const LikedVideoCard = ({
 	video,
 	setLikedVideos,
-}: {
-	video: video;
-	setLikedVideos: Function;
-}): JSX.Element => {
+}: likedVideosCardTypes): JSX.Element => {
 	const {
 		_id,
 		img,
