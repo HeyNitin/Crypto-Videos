@@ -229,7 +229,7 @@ const VideoPage = () => {
 							<p className="font-semibold">SAVE TO PLAYLIST</p>
 						</div>
 						{showModal && video && (
-							<div ref={modalRef}>
+							<div ref={modalRef} className="-mr-4">
 								<AddToPlaylistModal
 									key={video._id}
 									video={video}
