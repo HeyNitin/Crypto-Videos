@@ -1,3 +1,0 @@
-const useInitializeData = () => {};
-
-export { useInitializeData };
