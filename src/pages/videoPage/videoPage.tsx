@@ -1,7 +1,7 @@
 import axios from "axios";
 import { showToast } from "components/toast/toast";
 import { useDocumentTitle } from "hooks/useDocumentTitle";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { video } from "contexts/videoContext/videoContext.type";
 import { Sidebar } from "components/sidebar/sidebar";
@@ -23,6 +23,7 @@ const VideoPage = () => {
 	const [inLiked, setInLiked] = useState(false);
 	const { likedVideos, setLikedVideos } = useLikedVideos();
 	const [showModal, setShowModal] = useState(false);
+	const modalRef = useRef<any>(null);
 
 	useDocumentTitle(video?.title || "Video");
 
@@ -86,6 +87,18 @@ const VideoPage = () => {
 			}
 		}
 	}, [likedVideos, videoId]);
+
+	useEffect(() => {
+		function handleClickOutside(event: any) {
+			if (modalRef.current && !modalRef.current.contains(event.target)) {
+				setShowModal(false);
+			}
+		}
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [modalRef]);
 
 	const addToWatchLater = async () => {
 		try {
@@ -216,17 +229,19 @@ const VideoPage = () => {
 							<p className="font-semibold">SAVE TO PLAYLIST</p>
 						</div>
 						{showModal && video && (
-							<AddToPlaylistModal
-								key={video._id}
-								video={video}
-								setShowModal={setShowModal}
-								inWatchlist={inWatchlist}
-								inLiked={inLiked}
-								addToLikedVideos={addToLikedVideos}
-								addToWatchLater={addToWatchLater}
-								setLikedVideos={setLikedVideos}
-								setWatchLater={setWatchLater}
-							/>
+							<div ref={modalRef}>
+								<AddToPlaylistModal
+									key={video._id}
+									video={video}
+									setShowModal={setShowModal}
+									inWatchlist={inWatchlist}
+									inLiked={inLiked}
+									addToLikedVideos={addToLikedVideos}
+									addToWatchLater={addToWatchLater}
+									setLikedVideos={setLikedVideos}
+									setWatchLater={setWatchLater}
+								/>
+							</div>
 						)}
 					</div>
 					<div>{video?.description}</div>
