@@ -89,11 +89,11 @@ const VideoPage = () => {
 	}, [likedVideos, videoId]);
 
 	useEffect(() => {
-		function handleClickOutside(event: any) {
+		const handleClickOutside = (event: any) => {
 			if (modalRef.current && !modalRef.current.contains(event.target)) {
 				setShowModal(false);
 			}
-		}
+		};
 		document.addEventListener("mousedown", handleClickOutside);
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
