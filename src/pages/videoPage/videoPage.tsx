@@ -23,7 +23,7 @@ const VideoPage = () => {
 	const [inLiked, setInLiked] = useState(false);
 	const { likedVideos, setLikedVideos } = useLikedVideos();
 	const [showModal, setShowModal] = useState(false);
-	const modalRef = useRef<any>(null);
+	const modalRef = useRef<HTMLDivElement>(null);
 
 	useDocumentTitle(video?.title || "Video");
 
@@ -89,8 +89,11 @@ const VideoPage = () => {
 	}, [likedVideos, videoId]);
 
 	useEffect(() => {
-		const handleClickOutside = (event: any) => {
-			if (modalRef.current && !modalRef.current.contains(event.target)) {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				modalRef.current &&
+				!modalRef.current.contains(event.target as Node)
+			) {
 				setShowModal(false);
 			}
 		};
