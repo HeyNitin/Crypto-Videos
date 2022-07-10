@@ -160,7 +160,7 @@ const Signup = (): JSX.Element => {
 							placeholder="********"
 						/>
 					</div>
-					<div>
+					<div className="flex">
 						<input
 							className="mr-2 w-4"
 							onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
