@@ -99,7 +99,7 @@ const Login = (): JSX.Element => {
 							placeholder="********"
 						/>
 					</div>
-					<div>
+					<div className="flex">
 						<input
 							className="mr-2 w-4"
 							onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -113,7 +113,7 @@ const Login = (): JSX.Element => {
 							Remember me
 						</label>
 					</div>
-					<div>
+					<div className="flex">
 						<input
 							className="mr-2 w-4"
 							onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
