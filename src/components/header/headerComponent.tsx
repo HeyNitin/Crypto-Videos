@@ -8,13 +8,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { headerTypes } from "components/header/headerTypes.type";
 import { useEffect } from "react";
-import { useVideo } from "contexts/videoContext/videoContext";
 import { useAuth } from "contexts/authContext/authContext";
 import { getFirstName } from "services/getFirstNameService";
 
 const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 	const Navigate = useNavigate();
-	const { dispatch } = useVideo();
 	const { token, user } = useAuth();
 
 	useEffect(() => {
@@ -30,7 +28,7 @@ const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 	};
 
 	return (
-		<header className="bg-white drop-shadow-md dark:bg-slate-700 dark:text-white h-20 flex p-4 items-baseline fixed min-w-full top-0 z-30">
+		<header className="bg-white drop-shadow-md dark:bg-slate-700 dark:text-white h-20 flex p-4 items-baseline sticky min-w-full top-0 z-30">
 			<FontAwesomeIcon
 				onClick={() => setIsNavbarActive((prev: boolean) => !prev)}
 				className="lg:hidden pr-4 text-2xl cursor-pointer"
@@ -40,7 +38,6 @@ const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 				Crypto-Videos
 			</NavLink>
 			<NavLink
-				onClick={() => dispatch({ type: "All" })}
 				to={"/explore"}
 				className="hidden lg:block text-xl cursor-pointer ml-8"
 			>

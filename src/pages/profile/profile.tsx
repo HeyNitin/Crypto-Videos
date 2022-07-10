@@ -24,7 +24,7 @@ const Profile = (): JSX.Element => {
 				<p>Name: {user.name}</p>
 				<p>Email: {user.email}</p>
 				<button
-					className="w-full text-center p-2 mt-8 bg-black hover:bg-slate-600 text-white dark:bg-slate-100 dark:text-black"
+					className="w-full text-center p-2 my-4 bg-black hover:bg-slate-600 text-white dark:bg-slate-100 dark:text-black"
 					onClick={() => logoutHandler()}
 				>
 					Logout

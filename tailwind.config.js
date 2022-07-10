@@ -7,6 +7,7 @@ module.exports = {
 		extend: {
 			gridTemplateColumns: {
 				categories: "repeat(auto-fit,minmax(18rem,1fr))",
+				playlists: "repeat(auto-fit,minmax(25rem,1fr))",
 			},
 			spacing: {
 				banner: "32rem",

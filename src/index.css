@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "material-icons/iconfont/outlined.css";
+@import "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round";
 @import "material-symbols";
 
 :root {

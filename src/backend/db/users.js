@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
@@ -8,7 +7,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
 	{
-		_id: uuid(),
+		_id: 1,
 		name: "Nitin Kalra",
 		email: "nitin@cryptovideos.com",
 		password: "justfortest",

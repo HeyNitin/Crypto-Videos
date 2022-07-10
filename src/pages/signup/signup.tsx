@@ -84,19 +84,21 @@ const Signup = (): JSX.Element => {
 						showToast("success", "You're successfully Signed Up");
 						break;
 
-					case 422:
-						showToast("info", "Email already exists");
-						dispatch({
-							type: "Error",
-							payload: "Email already exists in database",
-						});
-						break;
-
 					default:
 						break;
 				}
 			} catch (error) {
-				showToast("error", "Something went wrong while tring to sign you up");
+				if (
+					((error as { response: { status: Number } }).response.status = 422)
+				) {
+					showToast("info", "Email already exists");
+					dispatch({
+						type: "Error",
+						payload: "Email already exists in database",
+					});
+				} else {
+					showToast("error", "Something went wrong while tring to sign you up");
+				}
 			}
 		}
 	};
@@ -158,7 +160,7 @@ const Signup = (): JSX.Element => {
 							placeholder="********"
 						/>
 					</div>
-					<div>
+					<div className="flex">
 						<input
 							className="mr-2 w-4"
 							onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

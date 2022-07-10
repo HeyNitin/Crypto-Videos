@@ -4,13 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "contexts/authContext/authContext";
 import axios from "axios";
 
-const HistoryCard = ({
-	video,
-	setHistory,
-}: {
+type historyCartTypes = {
 	video: video;
 	setHistory: Function;
-}): JSX.Element => {
+};
+
+const HistoryCard = ({ video, setHistory }: historyCartTypes): JSX.Element => {
 	const {
 		_id,
 		img,

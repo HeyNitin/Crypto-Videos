@@ -1,17 +1,18 @@
 import { useAuth } from "contexts/authContext/authContext";
+import { playListTypes } from "contexts/playListsContext/playListsContext.type";
 import { video } from "contexts/videoContext/videoContext.type";
 import { useNavigate } from "react-router-dom";
-import { removeFromLikedVideos } from "services/likedVideosServices";
+import { removeFromPlaylist } from "services/playlistServices";
 
-type likedVideosCardTypes = {
-	video: video;
-	setLikedVideos: Function;
-};
-
-const LikedVideoCard = ({
+const PlaylistVideoCart = ({
 	video,
-	setLikedVideos,
-}: likedVideosCardTypes): JSX.Element => {
+	setPlayLists,
+	playlist,
+}: {
+	video: video;
+	setPlayLists: Function;
+	playlist: playListTypes;
+}): JSX.Element => {
 	const {
 		_id,
 		img,
@@ -64,7 +65,13 @@ const LikedVideoCard = ({
 			<span
 				onClick={(e) => {
 					e.stopPropagation();
-					removeFromLikedVideos({ _id, setLikedVideos, token });
+					removeFromPlaylist({
+						_id: playlist._id,
+						setPlayLists,
+						title: playlist.title,
+						token,
+						video,
+					});
 				}}
 				className="material-symbols-outlined ml-auto cursor-pointer h-8 font- hover:bg-slate-200 dark:hover:bg-slate-500 text-2xl px-2"
 			>
@@ -74,4 +81,4 @@ const LikedVideoCard = ({
 	);
 };
 
-export { LikedVideoCard };
+export { PlaylistVideoCart };

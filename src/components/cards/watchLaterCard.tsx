@@ -1,7 +1,7 @@
 import { useAuth } from "contexts/authContext/authContext";
 import { video } from "contexts/videoContext/videoContext.type";
 import { useNavigate } from "react-router-dom";
-import { removeFromWatchLater } from "services/watchLaterServices/removeFromWatchLater";
+import { removeFromWatchLater } from "services/watchLaterServices";
 
 const WatchLaterCard = ({
 	video,
