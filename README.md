@@ -18,17 +18,17 @@
 - [Screenshots](#screenshots)
 - [Connect with me](#-connect-with-me)
 
-## About -
+## About
 
 Crypto Videos is a one stop video library for all your web 3.0 needs. From beginner to advanced, we've got it all covered.
 
-## Technologies Used -
+## Technologies Used
 
 - ReactJS
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Mockbee](https://github.com/neogcamp/mockBee) for backend
 
-## Live link -
+## Live link
 
 Live site : [Crypto-Videos](https://cryptovideos.netlify.app/)
 
