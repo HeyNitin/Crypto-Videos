@@ -4,7 +4,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { showToast } from "components/toast/toast";
 import { useAuth } from "contexts/authContext/authContext";
-import { signupInitialValueTypes } from "pages/signup/signupTypes";
+import { signupInitialValueTypes } from "pages/signup/signupTypes.type";
 import { signupRedcuer } from "pages/signup/signupReducer";
 import {
 	nameValidator,
