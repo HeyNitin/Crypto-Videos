@@ -1,7 +1,7 @@
 import {
 	signupInitialValueTypes,
 	signupActionTypes,
-} from "pages/signup/signupTypes";
+} from "pages/signup/signupTypes.type";
 
 const signupRedcuer = (
 	state: signupInitialValueTypes,
