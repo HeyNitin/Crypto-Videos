@@ -46,21 +46,25 @@ const AddToPlaylistModal = ({
 
 	const createNewPlaylist = async () => {
 		if (
-			playLists.filter((item) => item.title === newPlaylistName).length === 0
+			playLists.filter((item) => item.title === newPlaylistName.replace(/\s+/g, ' ').trim()).length === 0
 		) {
-			try {
-				const res = await axios.post(
-					"/api/user/playlists",
-					{ playlist: { title: newPlaylistName, desctiption: "" } },
-					{
-						headers: { authorization: token },
-					}
-				);
-				setPlayLists(res.data.playlists);
-				setNewPlaylistName("");
-				showToast("success", `New Playlist ${newPlaylistName} created `);
-			} catch (error) {
-				showToast("error", "Something went wrong while creating new playlist");
+			if (newPlaylistName.trim()) {
+				try {
+					const res = await axios.post(
+						"/api/user/playlists",
+						{ playlist: { title: newPlaylistName.replace(/\s+/g, ' ').trim(), desctiption: "" } },
+						{
+							headers: { authorization: token },
+						}
+					);
+					setPlayLists(res.data.playlists);
+					setNewPlaylistName("");
+					showToast("success", `New Playlist ${newPlaylistName} created `);
+				} catch (error) {
+					showToast("error", "Something went wrong while creating new playlist");
+				}
+			} else {
+				showToast('info', "Please add a name first")
 			}
 		} else {
 			showToast("error", "Playlist already exists");
@@ -107,10 +111,10 @@ const AddToPlaylistModal = ({
 						onChange={() =>
 							inWatchlist
 								? removeFromWatchLater({
-										_id: video?._id || "",
-										token,
-										setWatchLater,
-								  })
+									_id: video?._id || "",
+									token,
+									setWatchLater,
+								})
 								: addToWatchLater()
 						}
 						type={"checkbox"}
@@ -124,10 +128,10 @@ const AddToPlaylistModal = ({
 						onChange={() =>
 							inLiked
 								? removeFromLikedVideos({
-										_id: video?._id || "",
-										token,
-										setLikedVideos,
-								  })
+									_id: video?._id || "",
+									token,
+									setLikedVideos,
+								})
 								: addToLikedVideos()
 						}
 						type={"checkbox"}
@@ -144,12 +148,12 @@ const AddToPlaylistModal = ({
 									(e.target as HTMLInputElement).checked
 										? addToPlaylist(title, _id)
 										: removeFromPlaylist({
-												video,
-												title,
-												_id,
-												setPlayLists,
-												token,
-										  })
+											video,
+											title,
+											_id,
+											setPlayLists,
+											token,
+										})
 								}
 								type={"checkbox"}
 								id={title}
