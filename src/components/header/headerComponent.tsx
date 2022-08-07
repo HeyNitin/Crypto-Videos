@@ -51,16 +51,16 @@ const Header = ({ darkMode, setDarkMode, setIsNavbarActive }: headerTypes) => {
 			</div>
 			<div
 				onClick={() => (token ? Navigate("/profile") : Navigate("/login"))}
-				className="cursor-pointer flex flex-col ml-4 w-20"
+				className="cursor-pointer flex flex-col ml-4"
 			>
 				<FontAwesomeIcon
-					className="text-2xl self-center text-black hover:text-slate-700 dark:text-slate-300 dark:hover:text-white"
+					className="text-2xl text-black hover:text-slate-700 dark:text-slate-300 dark:hover:text-white"
 					icon={faUser}
 				/>
 				{token ? (
-					<p className="self-center">Hello, {getFirstName(user.name)}</p>
+					<p className="text-center truncate w-24">Hello, {getFirstName(user.name)}</p>
 				) : (
-					<p className="self-center">Login</p>
+					<p className="text-center">Login</p>
 				)}
 			</div>
 		</header>

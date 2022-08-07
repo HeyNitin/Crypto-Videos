@@ -79,7 +79,7 @@ describe("Testing login reducer", () => {
 
 		expect(state).toEqual(expectedState);
 	});
-	test("Testing case Default credentials", () => {
+	test("Testing case Default checked credentials", () => {
 		let expectedState = {
 			email: "Nitin@Cryptovideos.com",
 			password: "justfortest",
@@ -92,6 +92,23 @@ describe("Testing login reducer", () => {
 		let state = loginReducer(initialValue, {
 			type: "DefaultCredentials",
 			payload: true,
+		});
+
+		expect(state).toEqual(expectedState);
+	});
+	test("Testing case Default unchecked credentials", () => {
+		let expectedState = {
+			email: "",
+			password: "",
+			errorMsg: "",
+			error: false,
+			rememberMe: false,
+			defaultCredentials: false,
+		};
+
+		let state = loginReducer(initialValue, {
+			type: "DefaultCredentials",
+			payload: false,
 		});
 
 		expect(state).toEqual(expectedState);

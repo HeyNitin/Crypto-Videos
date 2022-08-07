@@ -1,5 +1,5 @@
 import { useDocumentTitle } from "hooks/useDocumentTitle";
-import { FormEvent, useReducer } from "react";
+import { FormEvent, useReducer, useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { showToast } from "components/toast/toast";
@@ -20,11 +20,13 @@ const initialValue: signupInitialValueTypes = {
 	error: false,
 	errorMsg: "",
 	tnc: false,
+	dummyData: false,
 };
 
 const Signup = (): JSX.Element => {
 	const [state, dispatch] = useReducer(signupRedcuer, initialValue);
 	const { setToken, setUser } = useAuth();
+	const [isPasswordVisible, setIsPasswordVisible] = useState<Boolean>(false)
 	const Navigate = useNavigate();
 	const location = useLocation();
 
@@ -110,55 +112,83 @@ const Signup = (): JSX.Element => {
 				<form onSubmit={(e) => signupHandler(e)}>
 					<div>
 						<label htmlFor="name">Enter your Name</label>
-						<input
-							className="mb-4 border border-black rounded w-full dark:text-black focus:outline-none focus:bg-white"
-							onChange={(e) =>
-								dispatch({ type: "Name", payload: e.target.value })
-							}
-							value={state.name}
-							type="text"
-							id="name"
-							placeholder="Enter your Name"
-						/>
+						<div className="border border-black flex gap-2 items-center mb-4 rounded h-6">
+							<input
+								className="w-full outline-none bg-transparent px-1"
+								onChange={(e) =>
+									dispatch({ type: "Name", payload: e.target.value })
+								}
+								value={state.name}
+								type="text"
+								id="name"
+								placeholder="Enter your Name"
+							/>
+						</div>
 					</div>
 					<div>
 						<label htmlFor="email-address">Email address</label>
-						<input
-							className="mb-4 border border-black rounded w-full dark:text-black focus:outline-none focus:bg-white"
-							onChange={(e) =>
-								dispatch({ type: "E-mail", payload: e.target.value })
-							}
-							value={state.email}
-							type="text"
-							id="email-address"
-							placeholder="john@cena.com"
-						/>
+						<div className="border border-black flex gap-2 items-center mb-4 rounded h-6">
+							<input
+								className="w-full outline-none bg-transparent px-1"
+								onChange={(e) =>
+									dispatch({ type: "E-mail", payload: e.target.value })
+								}
+								value={state.email}
+								type="text"
+								id="email-address"
+								placeholder="john@cena.com"
+							/>
+						</div>
 					</div>
 					<div>
 						<label htmlFor="password">Password</label>
-						<input
-							className="mb-4 border border-black rounded w-full dark:text-black focus:outline-none focus:bg-white"
-							onChange={(e) =>
-								dispatch({ type: "Password", payload: e.target.value })
-							}
-							value={state.password}
-							id="password"
-							type="password"
-							placeholder="********"
-						/>
+						<div className="border border-black flex gap-2 items-center mb-4 rounded">
+							<input
+								className="w-full outline-none bg-transparent px-1"
+								onChange={(e) =>
+									dispatch({ type: "Password", payload: e.target.value })
+								}
+								value={state.password}
+								id="password"
+								type={isPasswordVisible ? "text" : "password"}
+								placeholder="********"
+							/>
+							<span onClick={() => setIsPasswordVisible(prev => !prev)} className="material-icons-outlined cursor-pointer">
+								{isPasswordVisible ? "visibility" : "visibility_off"}
+							</span>
+						</div>
 					</div>
 					<div>
 						<label htmlFor="confirm-password">Confirm Password</label>
+						<div className="border border-black flex gap-2 items-center mb-4 rounded h-6">
+							<input
+								className="w-full outline-none bg-transparent px-1"
+								onChange={(e) =>
+									dispatch({ type: "ConfirmPassword", payload: e.target.value })
+								}
+								value={state.confirmPassword}
+								id="confirm-password"
+								type="password"
+								placeholder="********"
+							/>
+						</div>
+					</div>
+					<div className="flex">
 						<input
-							className="mb-4 border border-black rounded w-full dark:text-black focus:outline-none focus:bg-white"
-							onChange={(e) =>
-								dispatch({ type: "ConfirmPassword", payload: e.target.value })
+							className="mr-2 w-4"
+							onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+								dispatch({
+									type: "DummyData",
+									payload: e.target.checked,
+								})
 							}
-							value={state.confirmPassword}
-							id="confirm-password"
-							type="password"
-							placeholder="********"
+							checked={state.dummyData}
+							id="dummyData"
+							type="checkbox"
 						/>
+						<label className="mr-auto" htmlFor="dummyData">
+							Dummy Data
+						</label>
 					</div>
 					<div className="flex">
 						<input

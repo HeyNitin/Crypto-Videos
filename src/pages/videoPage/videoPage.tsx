@@ -24,6 +24,7 @@ const VideoPage = () => {
 	const { likedVideos, setLikedVideos } = useLikedVideos();
 	const [showModal, setShowModal] = useState(false);
 	const modalRef = useRef<HTMLDivElement>(null);
+	const showModalRef = useRef<HTMLDivElement>(null);
 
 	useDocumentTitle(video?.title || "Video");
 
@@ -91,8 +92,8 @@ const VideoPage = () => {
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
-				modalRef.current &&
-				!modalRef.current.contains(event.target as Node)
+				modalRef.current && showModalRef.current &&
+				!modalRef.current.contains(event.target as Node) && !showModalRef.current.contains(event.target as Node)
 			) {
 				setShowModal(false);
 			}
@@ -101,7 +102,7 @@ const VideoPage = () => {
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
-	}, [modalRef]);
+	}, [modalRef, showModalRef]);
 
 	const addToWatchLater = async () => {
 		try {
@@ -179,14 +180,14 @@ const VideoPage = () => {
 								token
 									? inLiked
 										? removeFromLikedVideos({
-												_id: video?._id || "",
-												token,
-												setLikedVideos,
-										  })
+											_id: video?._id || "",
+											token,
+											setLikedVideos,
+										})
 										: addToLikedVideos()
 									: Navigate("/login", {
-											state: { from: { pathname: location.pathname } },
-									  })
+										state: { from: { pathname: location.pathname } },
+									})
 							}
 							className="ml-auto flex gap-1 cursor-pointer items-center"
 						>
@@ -202,14 +203,14 @@ const VideoPage = () => {
 								token
 									? inWatchlist
 										? removeFromWatchLater({
-												_id: video?._id || "",
-												token,
-												setWatchLater,
-										  })
+											_id: video?._id || "",
+											token,
+											setWatchLater,
+										})
 										: addToWatchLater()
 									: Navigate("/login", {
-											state: { from: { pathname: location.pathname } },
-									  })
+										state: { from: { pathname: location.pathname } },
+									})
 							}
 							className="flex gap-1 cursor-pointer items-center"
 						>
@@ -219,12 +220,13 @@ const VideoPage = () => {
 							<p className="font-semibold">WATCH LATER</p>
 						</div>
 						<div
+							ref={showModalRef}
 							onClick={() =>
 								token
-									? setShowModal(true)
+									? setShowModal(prev => !prev)
 									: Navigate("/login", {
-											state: { from: { pathname: location.pathname } },
-									  })
+										state: { from: { pathname: location.pathname } },
+									})
 							}
 							className="flex gap-1 cursor-pointer relative items-center"
 						>

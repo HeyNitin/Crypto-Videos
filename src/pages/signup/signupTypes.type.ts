@@ -6,6 +6,7 @@ export type signupInitialValueTypes = {
 	errorMsg: string;
 	error: boolean;
 	tnc: boolean;
+	dummyData: boolean;
 };
 
 export type signupActionTypes =
@@ -14,4 +15,5 @@ export type signupActionTypes =
 	| { type: "Password"; payload: string }
 	| { type: "ConfirmPassword"; payload: string }
 	| { type: "Tnc"; payload: boolean }
+	| { type: "DummyData"; payload: boolean }
 	| { type: "Error"; payload: string };

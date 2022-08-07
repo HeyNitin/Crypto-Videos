@@ -8,6 +8,7 @@ let initialValue = {
 	errorMsg: "",
 	error: false,
 	tnc: false,
+	dummyData: false
 };
 
 describe("Testing signup reducer", () => {
@@ -20,6 +21,7 @@ describe("Testing signup reducer", () => {
 			errorMsg: "",
 			error: false,
 			tnc: false,
+			dummyData: false
 		};
 
 		let state = signupRedcuer(initialValue, {
@@ -38,6 +40,7 @@ describe("Testing signup reducer", () => {
 			errorMsg: "",
 			error: false,
 			tnc: false,
+			dummyData: false
 		};
 
 		let state = signupRedcuer(initialValue, {
@@ -56,6 +59,7 @@ describe("Testing signup reducer", () => {
 			errorMsg: "",
 			error: false,
 			tnc: false,
+			dummyData: false
 		};
 
 		let state = signupRedcuer(initialValue, {
@@ -74,11 +78,50 @@ describe("Testing signup reducer", () => {
 			errorMsg: "",
 			error: false,
 			tnc: false,
+			dummyData: false
 		};
 
 		let state = signupRedcuer(initialValue, {
 			type: "ConfirmPassword",
 			payload: "justfortest",
+		});
+
+		expect(state).toEqual(expectedValue);
+	});
+	test("testing DummyData checked case", () => {
+		let expectedValue = {
+			name: "Nitin Kalra",
+			email: "nitinnnnn@crypto.com",
+			password: "Justfortest2@",
+			confirmPassword: "Justfortest2@",
+			errorMsg: "",
+			error: false,
+			tnc: false,
+			dummyData: true
+		};
+
+		let state = signupRedcuer(initialValue, {
+			type: "DummyData",
+			payload: true,
+		});
+
+		expect(state).toEqual(expectedValue);
+	});
+	test("testing DummyData unchecked case", () => {
+		let expectedValue = {
+			name: "",
+			email: "",
+			password: "",
+			confirmPassword: "",
+			errorMsg: "",
+			error: false,
+			tnc: false,
+			dummyData: false
+		};
+
+		let state = signupRedcuer(initialValue, {
+			type: "DummyData",
+			payload: false,
 		});
 
 		expect(state).toEqual(expectedValue);
@@ -92,6 +135,7 @@ describe("Testing signup reducer", () => {
 			errorMsg: "",
 			error: false,
 			tnc: true,
+			dummyData: false
 		};
 
 		let state = signupRedcuer(initialValue, {
@@ -110,6 +154,7 @@ describe("Testing signup reducer", () => {
 			errorMsg: "Error occured",
 			error: true,
 			tnc: false,
+			dummyData: false
 		};
 
 		let state = signupRedcuer(initialValue, {

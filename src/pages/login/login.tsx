@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FormEvent, useReducer } from "react";
+import { FormEvent, useReducer, useState } from "react";
 import { useDocumentTitle } from "hooks/useDocumentTitle";
 import { showToast } from "components/toast/toast";
 import { useAuth } from "contexts/authContext/authContext";
@@ -20,6 +20,7 @@ const initialValue: loginInitialValueTypes = {
 const Login = (): JSX.Element => {
 	const [state, dispatch] = useReducer(loginReducer, initialValue);
 	const { setToken, setUser } = useAuth();
+	const [isPasswordVisible, setIsPasswordVisible] = useState<Boolean>(false)
 	const Navigate = useNavigate();
 	const location = useLocation();
 
@@ -75,29 +76,36 @@ const Login = (): JSX.Element => {
 				>
 					<div>
 						<label htmlFor="email-address">Email address</label>
-						<input
-							className="mb-4 border border-black rounded w-full dark:text-black focus:outline-none focus:bg-white"
-							onChange={(e) =>
-								dispatch({ type: "E-mail", payload: e.target.value })
-							}
-							value={state.email}
-							type="email"
-							id="email-address"
-							placeholder="Nitin@Cryptovideos.com"
-						/>
+						<div className="border border-black mb-4 rounded h-6">
+							<input
+								className=" w-full outline-none bg-transparent px-1"
+								onChange={(e) =>
+									dispatch({ type: "E-mail", payload: e.target.value })
+								}
+								value={state.email}
+								type="email"
+								id="email-address"
+								placeholder="Nitin@Cryptovideos.com"
+							/>
+						</div>
 					</div>
 					<div>
 						<label htmlFor="password">Password</label>
-						<input
-							className="mb-4 border border-black rounded w-full dark:text-black focus:outline-none focus:bg-white"
-							onChange={(e) =>
-								dispatch({ type: "Password", payload: e.target.value })
-							}
-							value={state.password}
-							id="password"
-							type="password"
-							placeholder="********"
-						/>
+						<div className="border border-black flex gap-2 items-center mb-4 rounded h-6">
+							<input
+								className="w-full outline-none bg-transparent px-1"
+								onChange={(e) =>
+									dispatch({ type: "Password", payload: e.target.value })
+								}
+								value={state.password}
+								id="password"
+								type={isPasswordVisible ? "text" : "password"}
+								placeholder="********"
+							/>
+							<span onClick={() => setIsPasswordVisible(prev => !prev)} className="material-icons-outlined cursor-pointer">
+								{isPasswordVisible ? "visibility" : "visibility_off"}
+							</span>
+						</div>
 					</div>
 					<div className="flex">
 						<input
@@ -151,8 +159,8 @@ const Login = (): JSX.Element => {
 						</div>
 					)}
 				</form>
-			</div>
-		</div>
+			</div >
+		</div >
 	);
 };
 

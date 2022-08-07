@@ -18,6 +18,24 @@ const signupRedcuer = (
 			return { ...state, confirmPassword: action.payload };
 		case "Tnc":
 			return { ...state, tnc: action.payload };
+		case "DummyData":
+			return action.payload
+				? {
+						...state,
+						name: "Nitin Kalra",
+						email: "nitinnnnn@crypto.com",
+						password: "Justfortest2@",
+						confirmPassword: "Justfortest2@",
+						dummyData: true,
+				  }
+				: {
+						...state,
+						name: "",
+						email: "",
+						password: "",
+						confirmPassword: "",
+						dummyData: false,
+				  };
 		case "Error":
 			return {
 				...state,
