@@ -95,7 +95,7 @@ const AddToPlaylistModal = ({
 	};
 
 	return (
-		<div className="absolute bottom-2/4 lg:bottom-1/3 right-0 left-0 mx-auto w-72 cursor-pointer z-30 bg-white dark:bg-slate-600 shadow-card rounded-md flex flex-col">
+		<div className="absolute bottom-2/4 lg:bottom-1/3 right-0 left-0 mx-auto w-72 z-30 bg-white dark:bg-slate-600 shadow-card rounded-md flex flex-col">
 			<div className="flex flex-row dark:border-slate-600 dark:border-b-white border-b-black border p-2 rounded-md">
 				<p className="text-lg">Save to...</p>
 				<span
@@ -106,7 +106,7 @@ const AddToPlaylistModal = ({
 				</span>
 			</div>
 			<div className="flex flex-col px-4 py-2 gap-1 text-lg">
-				<div className="cursor-pointer flex items-center gap-2">
+				<div className="flex items-center gap-2">
 					<input
 						onChange={() =>
 							inWatchlist
@@ -120,10 +120,11 @@ const AddToPlaylistModal = ({
 						type={"checkbox"}
 						id={"watch-later"}
 						checked={inWatchlist}
+						className="cursor-pointer"
 					/>
-					<label htmlFor="watch-later">Watch later</label>
+					<label className="cursor-pointer" htmlFor="watch-later">Watch later</label>
 				</div>
-				<div className="cursor-pointer flex items-center gap-2">
+				<div className="flex items-center gap-2">
 					<input
 						onChange={() =>
 							inLiked
@@ -137,12 +138,13 @@ const AddToPlaylistModal = ({
 						type={"checkbox"}
 						id={"liked-videos"}
 						checked={inLiked}
+						className="cursor-pointer"
 					/>
-					<label htmlFor="liked-videos">Liked videos</label>
+					<label className="cursor-pointer" htmlFor="liked-videos">Liked videos</label>
 				</div>
 				{playLists.map(({ title, _id }: { title: string; _id: string }) => {
 					return (
-						<div key={_id} className="cursor-pointer flex items-center gap-2">
+						<div key={_id} className="flex items-center gap-2">
 							<input
 								onChange={(e) =>
 									(e.target as HTMLInputElement).checked
@@ -160,8 +162,9 @@ const AddToPlaylistModal = ({
 								checked={
 									inPlaylists.find((data) => data === title) ? true : false
 								}
+								className="cursor-pointer"
 							/>
-							<label htmlFor={title}>{title}</label>
+							<label className="cursor-pointer" htmlFor={title}>{title}</label>
 						</div>
 					);
 				})}
@@ -180,7 +183,7 @@ const AddToPlaylistModal = ({
 							setNewPlaylistName((e.target as HTMLInputElement).value)
 						}
 						value={newPlaylistName}
-						className="m-2 mt-0 border border-black rounded w-60 dark:text-black focus:outline-none focus:bg-white"
+						className="m-2 mt-0 border border-black rounded w-60 dark:text-black focus:outline-none focus:bg-white px-1"
 						placeholder="Add playlist name"
 					/>
 					<button className="text-lg">Create</button>
@@ -188,7 +191,7 @@ const AddToPlaylistModal = ({
 			) : (
 				<div
 					onClick={() => setIsAddingPlaylist(true)}
-					className="flex items-center text-xl gap-1 mt-0 m-2"
+					className="flex items-center text-xl gap-1 mt-0 m-2 cursor-pointer mb-4"
 				>
 					<span className="material-symbols-outlined">add</span>
 					<p>Create a new playlist</p>
