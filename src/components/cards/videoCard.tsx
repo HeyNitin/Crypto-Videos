@@ -14,7 +14,7 @@ const VideoCard = ({ value }: { value: video }): JSX.Element => {
 			className="shadow-card m-4 cursor-pointer w-72 grid dark:bg-white"
 		>
 			<img
-				className="shadow-md col-start-1 col-end-2 row-start-1 row-end-3 p-1"
+				className="shadow-md col-start-1 col-end-2 row-start-1 row-end-3 p-1 w-full"
 				src={img}
 				alt="thumbnail"
 			></img>
